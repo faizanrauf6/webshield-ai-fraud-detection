@@ -512,6 +512,16 @@ code {
 .url-input-wrap input::placeholder {
   color: var(--muted);
 }
+/* Show focus on the complete field instead of a second box inside it. */
+.url-input-wrap input:focus-visible,
+.search-input input:focus-visible {
+  outline: none;
+}
+.url-input-wrap:has(input:focus-visible),
+.search-input:has(input:focus-visible) {
+  border-color: var(--focus);
+  box-shadow: 0 0 0 1px var(--focus);
+}
 .primary-button {
   border: 1px solid var(--teal);
   background: var(--teal);
