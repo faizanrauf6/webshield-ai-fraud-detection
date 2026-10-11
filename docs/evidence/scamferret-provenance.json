@@ -1,0 +1,143 @@
+{
+  "repository": "https://github.com/ScamFerret/artifact",
+  "pinned_commit": "8cf8dc631edafe584141e2f95f0c0f51855fb7bc",
+  "citation": "Hiroki Nakano, Takashi Koide, and Daiki Chiba. ScamFerret: Detecting Scam Websites Autonomously with Large Language Models. DIMVA 2025, Springer.",
+  "tree_sha256": "ee69b6c7cbaf781085dbede0b3803665a7e8f4c1ee3456dd6b5bcc1021faaaf7",
+  "license": "GPL-3.0",
+  "notices_preserved_locally": ["raw/LICENSE", "raw/README.md"],
+  "scope": "scam-research-store-investment-cryptocurrency",
+  "production_eligible": false,
+  "labels": "Published groundtruth_url.txt path classes; not independently re-adjudicated.",
+  "labeling_audit": {
+    "primary_paper": "https://arxiv.org/html/2502.10110v1#S4",
+    "candidate_sources": [
+      "ScamGuard",
+      "The Scam Directory",
+      "Double-and-Nothing",
+      "TSS_ESP23",
+      "NOLA Defense"
+    ],
+    "legitimate_sources": ["Curlie", "Trustpilot"],
+    "reported_candidate_collection_window": "2024-04-01 through 2024-04-07; not a per-row snapshot timestamp",
+    "adjudication": "Section 4 describes Tranco top-100k exclusion, HTTP-200 accessibility, consensus inspection by three security engineers using search engines, content and screenshots, then balanced sampling.",
+    "provider_circularity": "Google Safe Browsing, OpenPhish and WHOIS age are not specified as labeling rules. Undisclosed dependencies of upstream candidate sources cannot be excluded.",
+    "content_circularity": "Content informed manual adjudication; labels are not independently observed financial outcomes. No claim of blind content-independent truth."
+  },
+  "dataset_subset": "dataset; three English categories; 200 published URLs per category/class before exclusions",
+  "features": "Production URL normalization, static scanner extract_html, and raw WHOIS records only.",
+  "forbidden_features": [
+    "LLM verdicts",
+    "LLM thoughts",
+    "search results",
+    "current websites",
+    "current WHOIS"
+  ],
+  "date_semantics": {
+    "first_seen_at": "unknown; empty in every row",
+    "content_observedAt": "Pinned artifact commit timestamp is an upper bound, NOT capture time.",
+    "domain_observedAt": "WHOIS database update reference timestamp, NOT query/capture time.",
+    "assessment_asOf": "Artifact publication upper bound; no temporal-generalization claim."
+  },
+  "missingness": "Unknown DNS addresses and redirect histories are represented by empty arrays; production feature zeros conflate unknown and absent.",
+  "unavailable_ablation": "hybrid-v2: no independently timestamped threat-provider history; no full-hybrid claim.",
+  "split": "Registered-domain-connected group split (seed 42); campaign IDs unavailable, registered domain proxy.",
+  "reuse_caveat": "Repurposes the published evaluation subset into our own group train/validation/test partitions; not an original ScamFerret benchmark comparison.",
+  "counts": {
+    "published_rows": 1200,
+    "retained_rows": 1190,
+    "content_available": 1090,
+    "domain_age_available": 759,
+    "content_available:cryptocurrency:0": 185,
+    "domain_age_available:cryptocurrency:0": 114,
+    "cryptocurrency:0": 200,
+    "missing:domain:no_usable_timestamped_whois_record": 424,
+    "missing:html:Expanded HTML exceeds 1 MiB static scanner limit.": 35,
+    "missing:html:size_limit": 1,
+    "missing:html:missing_upstream_blob": 64,
+    "content_available:investment:0": 197,
+    "domain_age_available:investment:0": 133,
+    "investment:0": 200,
+    "content_available:online_shopping_english:0": 143,
+    "domain_age_available:online_shopping_english:0": 146,
+    "online_shopping_english:0": 200,
+    "content_available:cryptocurrency:1": 182,
+    "domain_age_available:cryptocurrency:1": 160,
+    "cryptocurrency:1": 190,
+    "missing:trace:missing_upstream_blob": 7,
+    "content_available:investment:1": 199,
+    "domain_age_available:investment:1": 130,
+    "investment:1": 200,
+    "content_available:online_shopping_english:1": 184,
+    "domain_age_available:online_shopping_english:1": 76,
+    "online_shopping_english:1": 200
+  },
+  "source_inventory": {
+    "files": 2316,
+    "sha256": "b1efb1fdcc2794c49ae2b9779922258a83ee7fa6030b08d33b56b572d140c1b7",
+    "hash_encoding": "SHA256 of UTF-8 json.dumps(source_files, sort_keys=True)",
+    "raw_inventory_location": "ignored ml/data/scamferret/provenance.json"
+  },
+  "local_provenance_sha256": "065f0ff820dd9bbfd023f9ad512c424a19fe14e0f156865dd03f3ba134d43bf0",
+  "source_metadata_audit": {
+    "commit_sha": "8cf8dc631edafe584141e2f95f0c0f51855fb7bc",
+    "git_tree_sha": "6f59aa1d88fd7f66b8e0cce6cc0e115bfbf952bc",
+    "commit_author_date": "2025-09-30T08:10:39Z",
+    "commit_committer_date": "2025-09-30T08:10:39Z",
+    "primary_commit_api": "https://api.github.com/repos/ScamFerret/artifact/commits/8cf8dc631edafe584141e2f95f0c0f51855fb7bc",
+    "date_caveat": "Git committer timestamp used as artifact upper bound; per-row capture time and GitHub first-publication/push time are unknown.",
+    "recursive_tree_api_caveat": "The cached recursive git/trees response identifies its requested commit ref in sha; the commit metadata separately supplies the Git tree object ID."
+  },
+  "download_failure_count": 0,
+  "exclusions": [
+    {
+      "category": "cryptocurrency",
+      "label": 1,
+      "reason": "duplicate normalized URL"
+    },
+    {
+      "category": "cryptocurrency",
+      "label": 1,
+      "reason": "duplicate normalized URL"
+    },
+    {
+      "category": "cryptocurrency",
+      "label": 1,
+      "reason": "duplicate normalized URL"
+    },
+    {
+      "category": "cryptocurrency",
+      "label": 1,
+      "reason": "duplicate normalized URL"
+    },
+    {
+      "category": "cryptocurrency",
+      "label": 1,
+      "reason": "duplicate normalized URL"
+    },
+    {
+      "category": "cryptocurrency",
+      "label": 1,
+      "reason": "duplicate normalized URL"
+    },
+    {
+      "category": "cryptocurrency",
+      "label": 1,
+      "reason": "duplicate normalized URL"
+    },
+    {
+      "category": "cryptocurrency",
+      "label": 1,
+      "reason": "duplicate normalized URL"
+    },
+    {
+      "category": "cryptocurrency",
+      "label": 1,
+      "reason": "duplicate normalized URL"
+    },
+    {
+      "category": "cryptocurrency",
+      "label": 1,
+      "reason": "duplicate normalized URL"
+    }
+  ]
+}

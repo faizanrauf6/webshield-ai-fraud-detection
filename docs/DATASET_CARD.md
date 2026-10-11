@@ -1,18 +1,30 @@
 # Dataset card
 
-## Evaluated public benchmark
+## Current phishing experiment: PhreshPhish
 
-Source: [PhiUSIIL, UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset), Arvind Prasad and Shalini Chandra (2024), CC BY 4.0. Research citation: doi:10.1016/j.cose.2023.103545. The user authorized this public phishing benchmark. Published labels were used; this project did not independently re-review every website.
+[PhreshPhish](https://huggingface.co/datasets/phreshphish/phreshphish), [primary paper](https://arxiv.org/abs/2507.10854), CC BY 4.0. Pinned revision `eabec4b7a66324b79cc8a0ad856d1731dc26fe1a`. Research importer retrieves URL, label, date and source hash columns using HTTP range requests across all 77 Parquet shards; no HTML column or listed target website is fetched.
 
-235,795 source rows yielded 234,661 canonical records: 134,849 legitimate and 99,812 phishing. Import excluded 33 unsupported URLs, 1,100 duplicate rows and the retained entry for one conflicting canonical URL. UCI uses `1=legitimate, 0=phishing`; import maps to `0=legitimate, 1=phishing`. No listed website was visited. Only URL strings and labels were imported; existing UCI content/similarity columns were not reused.
+666,315 source metadata rows are sampled by the lowest SHA-256(`webshield-v2:` + original URL), independently of label, retaining 150,000 before policy/deduplication. 148,352 valid canonical examples remain: 81,512 benign and 66,840 phishing. Exclusions: 1,627 unsupported URLs and 21 canonical duplicate rows, zero conflicting URLs. Labels are published `benign`/`phish`, converted to 0/1; not independently adjudicated by this project.
 
-[Machine-readable provenance](evidence/benchmark-provenance.json) records download URL, archive/prepared hashes, import time, source attribution and exclusions. Raw URLs, error lists and model binaries stay outside version control. Aggregate metrics and provenance are retained under `docs/evidence/`.
+Published observation dates have day precision. Exact collection times are not invented. Custom temporal evaluation uses validation from 2025-07-01 and test from 2025-09-09, with connected domain/campaign overlap purged from earlier windows. This deliberately differs from the authors' published split. Domain grouping is a proxy because campaign IDs are unavailable. Dataset/date/class drift and benchmark prevalence limit live-site generalization.
 
-## Dates, grouping and limits
+[Provenance](evidence/phreshphish-provenance.json) records every cached source metadata hash, pinned revision, sample rule, exclusions and prepared CSV hash. Raw data, URL error lists and model binaries are excluded from Git and container build context.
 
-Per-record observation dates and campaign IDs are unavailable. Publication/import time is not first-seen time. Blank observation dates are allowed only for explicit grouped evaluation. Registrable-domain components are disjoint across deterministic seed-42 partitions; unknown cross-domain campaign overlap may remain. The holdout is frozen and checksum verified before evaluation.
+## Archived fraud research: ScamFerret
 
-This historical phishing benchmark cannot establish investment-fraud or deceptive-store performance, temporal robustness or real hybrid improvements. Do not collect today's content and describe it as the benchmark's historical content.
+[ScamFerret DIMVA 2025 artifact](https://github.com/ScamFerret/artifact), Nakano, Koide and Chiba, [primary paper](https://arxiv.org/abs/2502.10110). GPL-3.0 artifact pinned to `8cf8dc631edafe584141e2f95f0c0f51855fb7bc`. Only English shopping, investment and cryptocurrency categories are used. Labels come from the authors' published legitimate/scam cohorts and are not inferred from model output, URL spelling or provider absence.
+
+The importer downloads archived gzip HTML and recorded tool traces from the pinned repository, validates Git blob hashes, bounds compressed and expanded bytes, and uses the production static parser offline. Archived scripts never execute; listed websites are not visited. Only WHOIS creation/database-reference dates are considered from tool observations; model thoughts, answers and search classifications are excluded from features. Unsupported dates remain missing. WHOIS is not mislabeled RDAP.
+
+Original capture dates are unknown. Content timestamps carry an explicit artifact-publication upper-bound meaning, never first-seen/capture time. `first_seen_at` remains blank and splits are domain-grouped. Redirects/DNS/final destinations and historical threat observations are unavailable. Research artifacts preserve those limitations and are separate from the production phishing model. [Fraud provenance](evidence/scamferret-provenance.json) and [ablations](evidence/scamferret-ablations.json) record actual coverage, exclusions, splits and measurements.
+
+Manual adjudication used web content/screenshots/searches, so content features overlap the evidence basis for labels. The labels establish published expert classifications, not independently verified financial outcomes. Small single-source category holdouts cannot establish current arbitrary-site accuracy.
+
+## Legacy benchmark: PhiUSIIL
+
+[UCI PhiUSIIL](https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset), Prasad and Chandra (2024), CC BY 4.0, doi:10.1016/j.cose.2023.103545. 235,795 source rows yielded 234,661 records (134,849 legitimate / 99,812 phishing), excluding 33 unsupported URLs, 1,100 duplicates and one conflicting canonical URL. Original 1=legitimate/0=phishing labels were inverted. Dates are absent, so its experiment is group-disjoint only.
+
+Every legitimate source URL begins with `www.`, a harmful collection shortcut; the installed v1 model also overflagged benign paths. Its high historical score did not transfer to normal live inputs. The production model was replaced with lexical-v2 trained on PhreshPhish. Legacy [provenance](evidence/benchmark-provenance.json) and [metrics](evidence/benchmark-evaluation.json) remain as an audit trail, not the current model's performance.
 
 ## Additional datasets
 

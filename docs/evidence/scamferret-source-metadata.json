@@ -1,0 +1,9 @@
+{
+  "commit_sha": "8cf8dc631edafe584141e2f95f0c0f51855fb7bc",
+  "git_tree_sha": "6f59aa1d88fd7f66b8e0cce6cc0e115bfbf952bc",
+  "commit_author_date": "2025-09-30T08:10:39Z",
+  "commit_committer_date": "2025-09-30T08:10:39Z",
+  "primary_commit_api": "https://api.github.com/repos/ScamFerret/artifact/commits/8cf8dc631edafe584141e2f95f0c0f51855fb7bc",
+  "date_caveat": "Git committer timestamp used as artifact upper bound; per-row capture time and GitHub first-publication/push time are unknown.",
+  "recursive_tree_api_caveat": "The cached recursive git/trees response identifies its requested commit ref in sha; the commit metadata separately supplies the Git tree object ID."
+}

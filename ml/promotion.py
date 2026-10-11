@@ -10,7 +10,7 @@ from inference import load_bundle
 
 def promote(artifacts, destination):
     artifacts, destination = Path(artifacts), Path(destination)
-    manifest, _ = load_bundle(artifacts)
+    manifest, model = load_bundle(artifacts)
     report_path = artifacts / 'evaluation.json'
     if hashlib.sha256(report_path.read_bytes()).hexdigest() != manifest.get('evaluation_sha256'):
         raise ValueError('A matching frozen holdout evaluation is required before promotion.')
@@ -20,6 +20,8 @@ def promote(artifacts, destination):
             or manifest.get('selection_partition') != 'validation'
             or manifest['validation_selection'][manifest['selected_model']]['recall'] <= 0):
         raise ValueError('Only a real, documented, validated experiment may be promoted.')
+    from acceptance import development_acceptance
+    manifest['development_acceptance'] = development_acceptance(manifest, model)
     selected = manifest['artifacts'][manifest['selected_model']]
     destination.mkdir(parents=True, exist_ok=True)
     filename = selected['sha256'][:16] + '.joblib'

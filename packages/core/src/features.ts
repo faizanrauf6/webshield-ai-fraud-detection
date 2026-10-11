@@ -1,7 +1,7 @@
 import { normalizeUrl } from './policy';
 import ipaddr from 'ipaddr.js';
 
-export const FEATURE_VERSION = 'lexical-v1';
+export const FEATURE_VERSION = 'lexical-v2';
 export const FEATURE_NAMES = [
   'url_length',
   'hostname_length',
@@ -16,9 +16,15 @@ export const FEATURE_NAMES = [
   'https',
   'hostname_entropy',
 ] as const;
-export function extractFeatures(input: string): Record<string, number> {
-  const normalized = normalizeUrl(input);
+export function extractFeatures(input: string, version = FEATURE_VERSION): Record<string, number> {
+  let normalized = normalizeUrl(input);
   const url = new URL(normalized);
+  // PhiUSIIL's legitimate URLs all have www. Do not learn that collection convention.
+  // This is feature-only canonicalization; request/provider URLs remain unchanged.
+  if (version.endsWith('-v2') && url.hostname.startsWith('www.')) {
+    url.hostname = url.hostname.slice(4);
+    normalized = url.toString();
+  }
   const counts = new Map<string, number>();
   for (const c of url.hostname) counts.set(c, (counts.get(c) || 0) + 1);
   let entropy = 0;

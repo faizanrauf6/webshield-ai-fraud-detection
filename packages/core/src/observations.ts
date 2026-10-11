@@ -1,5 +1,5 @@
 import { getDomain } from 'tldts';
-import { extractFeatures, FEATURE_NAMES } from './features';
+import { extractFeatures, FEATURE_NAMES, FEATURE_VERSION } from './features';
 import { extractCryptoAddresses } from './analysis';
 import { normalizeUrl } from './policy';
 import groups from './observation-groups.json';
@@ -11,6 +11,10 @@ export function featureSchema(version: string) {
     'url-domain-v1': ['domain'],
     'url-content-v1': ['domain', 'content'],
     'hybrid-v1': ['domain', 'content', 'threat'],
+    'lexical-v2': [],
+    'url-domain-v2': ['domain'],
+    'url-content-v2': ['domain', 'content'],
+    'hybrid-v2': ['domain', 'content', 'threat'],
   };
   if (!Object.hasOwn(stages, version)) throw new Error('Unknown feature schema.');
   return {
@@ -31,7 +35,7 @@ const domain = (value: string) => {
 export function buildObservationFeatures(
   url: string,
   o: ObservationSnapshot,
-  version = 'lexical-v1',
+  version = FEATURE_VERSION,
 ) {
   const content = o.content;
   const at = o.asOf ? Date.parse(o.asOf) : Date.now();
@@ -53,7 +57,7 @@ export function buildObservationFeatures(
       Date.parse(p.checkedAt) <= at,
   );
   const values: Record<string, number> = {
-    ...extractFeatures(url),
+    ...extractFeatures(url, version),
     domain_available: Number(Boolean(o.domain)),
     domain_age_known: Number(o.domain?.ageDays != null),
     domain_age_days: Math.min(o.domain?.ageDays || 0, 36500),

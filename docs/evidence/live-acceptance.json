@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-10-11T20:12:39.109Z",
+  "google": {
+    "benign_negative": true,
+    "test_phishing_positive": true,
+    "expiry_present": true
+  },
+  "worker": {
+    "static_html": true,
+    "public_dns": true,
+    "authoritative_rdap": true,
+    "internal_target_blocked": true
+  },
+  "isolation": "5 internal socket attempts blocked; worker cannot change firewall rules"
+}

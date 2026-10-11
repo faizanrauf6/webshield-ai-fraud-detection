@@ -59,7 +59,7 @@ services:
       retries: 20
   web:
     build: .
-    command: ['npm', 'run', 'start', '-w', '@webshield/web']
+    command: ['npm', 'run', 'start', '-w', '@webshield/web', '--', '--hostname', '0.0.0.0']
     environment:
       API_BASE_URL: http://api:4000
     ports: ['127.0.0.1:3000:3000']

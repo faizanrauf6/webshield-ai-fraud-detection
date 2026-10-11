@@ -158,8 +158,10 @@ export function Research() {
             {model.model_version}
           </p>
           <p className="body-muted">
-            Benchmark observation dates are unavailable; these results do not establish temporal
-            performance, hybrid improvement, or detection of deceptive stores and investment fraud.
+            {model.evaluation.protocol === 'temporal-group-purged'
+              ? 'Later observation dates form the holdout, with overlapping domains removed from earlier periods. These measurements remain specific to this historical phishing sample.'
+              : 'Observation dates are unavailable; these results measure unseen domain groups rather than later time periods.'}{' '}
+            Phishing metrics do not establish detection of deceptive stores and investment fraud.
           </p>
         </section>
       )}

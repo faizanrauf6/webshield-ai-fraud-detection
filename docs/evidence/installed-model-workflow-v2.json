@@ -1,0 +1,79 @@
+{
+  "checked_at": "2026-10-11T20:44:52.909Z",
+  "workflow_total_ms": 16267.052375,
+  "model_version": "lexical-v2-hist_gradient_boosting-a62d69962e84",
+  "benign": {
+    "scan_id": "8349675b-e850-4a7c-8742-59e9cf79daab",
+    "assessment": {
+      "category": "low_observed_risk",
+      "numeric_score": 36.54,
+      "score_kind": "model_probability",
+      "model_version": "lexical-v2-hist_gradient_boosting-a62d69962e84",
+      "model_probability": 0.36537215394134553,
+      "model_threshold": 0.768571778610234,
+      "model_scope": "phishing",
+      "summary": "The phishing estimate is below the selected warning threshold. This does not establish website or business legitimacy; review missing checks and other evidence.",
+      "is_verified_malicious": false
+    },
+    "checks": [
+      {
+        "name": "URL analysis",
+        "status": "completed"
+      },
+      {
+        "name": "Domain intelligence",
+        "status": "completed"
+      },
+      {
+        "name": "Threat intelligence",
+        "status": "completed"
+      },
+      {
+        "name": "Page content",
+        "status": "completed"
+      },
+      {
+        "name": "Cryptocurrency indicators",
+        "status": "completed"
+      },
+      {
+        "name": "Machine learning",
+        "status": "completed"
+      },
+      {
+        "name": "Domain registration",
+        "status": "completed"
+      },
+      {
+        "name": "Provider: OpenPhish Community Feed",
+        "status": "completed"
+      },
+      {
+        "name": "Provider: Google Safe Browsing",
+        "status": "completed"
+      }
+    ]
+  },
+  "repeat_scan_id": "f1a88056-a2bb-4765-bd9a-2fafb9cdb714",
+  "google_test": {
+    "scan_id": "2e4c83e1-3ddc-4453-b4a4-f99f2767bc93",
+    "category": "confirmed_malicious",
+    "provider_source": "Google Safe Browsing"
+  },
+  "verified": [
+    "frontend HTTP",
+    "queued submission",
+    "installed v2 inference",
+    "benign below warning threshold",
+    "live content DNS RDAP",
+    "Google benign/test phishing",
+    "stored report",
+    "history",
+    "export parity",
+    "resubmission"
+  ],
+  "notes": [
+    "Official phishing test URL only, not a real attacker site.",
+    "Combined workflow time includes three scans, export and history; not single-scan latency."
+  ]
+}

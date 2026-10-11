@@ -1,5 +1,6 @@
 import {
   normalizeUrl,
+  FEATURE_VERSION,
   buildObservationFeatures,
   type ObservationSnapshot,
 } from '../packages/core/src';
@@ -29,7 +30,7 @@ process.stdin.on('end', () => {
           features: buildObservationFeatures(
             normalized,
             entry.observations || {},
-            process.argv.find((a) => a.startsWith('--schema='))?.slice(9) || 'lexical-v1',
+            process.argv.find((a) => a.startsWith('--schema='))?.slice(9) || FEATURE_VERSION,
           ),
         };
       } catch (error) {

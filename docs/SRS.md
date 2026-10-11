@@ -19,11 +19,11 @@ A controlled FYP website-risk research application combining URL structure, opti
 
 ## Research acceptance
 
-Use documented source/label provenance, shared feature extraction, domain/campaign leakage controls, validation-only selection and a frozen holdout. Report class metrics, false positives, calibration, errors and limitations. A public phishing benchmark satisfies the lexical phishing comparison only. Broader fraud, temporal robustness, reputation comparison and hybrid improvements require additional appropriate data; they remain pending.
+Use documented source/label provenance, shared feature extraction, domain/campaign leakage controls, validation-only selection and a frozen holdout. Report class metrics, false positives, calibration, errors and limitations. The current dated PhreshPhish experiment measures temporal phishing performance. Separate published ScamFerret snapshots measure URL/domain/content comparisons for stores, investment and crypto. Historical threat/reputation comparisons remain unavailable without aligned independent provider history; broader production accuracy targets are not established by these research-only models.
 
 ## Nonfunctional requirements and evidence
 
-Bound request/response sizes and execution time; keep secrets backend-only; render target content as text; keep integration failures distinct from clean observations. Provide responsive keyboard-accessible screens and reproducible deployment/tests. [Verification evidence](evidence/verification.md) records unit, persistence/queue, production build, mobile/desktop and accessibility outcomes plus unverified container/live boundaries.
+Bound request/response sizes and execution time; keep secrets backend-only; render target content as text; keep integration failures distinct from clean observations. Provide responsive keyboard-accessible screens and reproducible deployment/tests. [Verification evidence](evidence/verification.md) records unit, persistence/queue, production build, mobile/desktop and accessibility outcomes plus actual container firewall, live static/DNS/RDAP and Google acceptance.
 
 ## Exclusions
 

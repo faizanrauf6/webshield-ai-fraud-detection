@@ -1,0 +1,40 @@
+{
+  "model_version": "lexical-v2-hist_gradient_boosting-a62d69962e84",
+  "threshold": 0.768571778610234,
+  "passed": true,
+  "purpose": "Development regression only, not an accuracy estimate or a safety guarantee.",
+  "cases": [
+    {
+      "url": "https://example.com/",
+      "probability": 0.36537215394134553
+    },
+    {
+      "url": "https://www.example.com/",
+      "probability": 0.36537215394134553
+    },
+    {
+      "url": "https://example.com/login",
+      "probability": 0.4362709071281895
+    },
+    {
+      "url": "https://www.example.com/login",
+      "probability": 0.4362709071281895
+    },
+    {
+      "url": "https://github.com/login",
+      "probability": 0.45596221595864667
+    },
+    {
+      "url": "https://www.github.com/login",
+      "probability": 0.45596221595864667
+    },
+    {
+      "url": "https://accounts.google.com/signin",
+      "probability": 0.5197746945222986
+    },
+    {
+      "url": "https://www.accounts.google.com/signin",
+      "probability": 0.5197746945222986
+    }
+  ]
+}

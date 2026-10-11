@@ -1,29 +1,26 @@
 # Implementation status — 12 October 2026
 
-The pending software work from the original [review](PROJECT_REVIEW.md) has been implemented sequentially. The original review records the state before these changes. The [completion ledger](COMPLETION_PROGRESS.md) records execution; [verification evidence](evidence/verification.md) records the acceptance checks.
+The software, Google integration, isolated collection, temporal phishing experiment and archived broader-fraud comparisons are implemented. The [original review](PROJECT_REVIEW.md) describes the older state; [verification](evidence/verification.md) and [completion ledger](COMPLETION_PROGRESS.md) record subsequent work.
 
-| Proposal requirement                        | Current implementation                                                                | Remaining acceptance / research work                                     |
-| ------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| FR-01–03 submission, URL policy, processing | Persistent queued scans, parsing, retries and recovery                                | Application integration and browser checks passed                        |
-| FR-04 ML classification                     | Real selected phishing bundle, bounded inference, probabilities, calibrated threshold | Temporal and broader fraud external validity                             |
-| FR-05 threat intelligence                   | OpenPhish and optional Google; per-source provenance and expiry                       | Google live test requires key                                            |
-| FR-06 content                               | Isolated static HTML, forms, redirects, storefront/claim indicators                   | Container isolation and live collection acceptance require Docker engine |
-| FR-07 crypto indicators                     | Address checksums, claim patterns, static evidence                                    | Independently labeled investment/crypto fraud evaluation                 |
-| FR-08 assessment                            | Model estimate, warning aggregation, independent current provider authority           | No universal safety or business-legitimacy claim                         |
-| FR-09 history/export                        | Persisted reports, pagination, repeat submissions, JSON export                        | Verified with actual database/queue and browser flows                    |
-| FR-10 safety/configuration                  | Local defaults, validated worker config, firewall probe and CI job                    | Run container acceptance before enabling collection                      |
-
-## Delivered changes
-
-- Real UCI dataset import/provenance, label conversion, canonical deduplication, domain-group splits, three calibrated baselines, validation-only model/threshold selection and frozen holdout reporting.
-- Trusted-local promotion and checksum/schema validation, bounded Python inference, versioned report metadata and actual research metrics in the UI.
-- Four cumulative lexical/domain/content/threat schemas, explicit missingness and historical-snapshot ablation tooling. All four stages executed on synthetic smoke data only.
-- Broader form/redirect/storefront/investment warnings, accurate summaries, associated HTML form/base extraction, per-provider exported observations and expiry fallback.
-- Docker Python runtime, provider/model environment wiring, scanner unit checks and isolation CI job.
-- Corrected requirements, deployment, model/dataset cards and FYP handoff documents.
+| Proposal area                    | Working now                                                                                                                         | Remaining limits                                                           |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Submission and processing        | URL policy, persistent queue, retries/recovery, history and JSON export                                                             | Controlled shared local workspace; no accounts                             |
+| Phishing ML                      | Corrected v2 features, dated public dataset, calibrated selected model, frozen chronological holdout, development promotion gates   | Recall 58.41% at FPR 1.64%; estimates do not establish safety              |
+| Threat intelligence              | OpenPhish plus Google exact-URL reports, time/expiry/fallback                                                                       | Current provider coverage is incomplete                                    |
+| Static content/domain            | Docker-isolated HTML/forms/redirects, public DNS and authoritative RDAP                                                             | Static HTML only; missing observations remain explicit                     |
+| Crypto/investment/store warnings | Address validation, claim patterns, storefront/credential evidence                                                                  | Presence alone does not establish wrongdoing                               |
+| Broader research                 | 1,190 archived store/investment/crypto labels,1,090 HTML snapshots,759 domain ages; three cumulative ablations and category metrics | Content-model FPR 8.47% overall/21.62% on legitimate crypto; research-only |
+| Isolation acceptance             | Actual internal socket denial, privilege restriction, live HTML/DNS/RDAP and blocked internal target passed                         | No absolute sandbox guarantee                                              |
+| Google acceptance                | Owner key configured privately; benign no-match and public phishing-test match/expiry passed                                        | Provider errors remain unavailable evidence                                |
 
 ## Is it fully developed?
 
-**No, against the full proposal.** The software and evaluated lexical phishing path are substantially complete and tested. The original hybrid improvement hypothesis still requires independently reviewed historical domain/content/provider snapshots, dated temporal data and labeled deceptive-store/investment examples. The chosen public phishing benchmark cannot supply that evidence. Container-level and live collection acceptance also remains pending until Docker is available; Google live acceptance requires credentials.
+**The controlled FYP application is implemented and its previously blocked integrations now work. The full research proposal is not yet scientifically complete.**
 
-Accounts, on-chain tracing, wallet operations, screenshot classification and browser extensions are outside the agreed controlled FYP scope.
+The known example.com false-positive regression is fixed without an allowlist: all-www sampling and path bias were diagnosed, versioned features and a newer dated source replaced the old model, and benign root/login regressions gate promotion.
+
+Real archived store/investment/crypto data now supports measured URL/domain/content comparisons. Those results do not justify deploying a broad scam classifier: the content model exceeds the intended false-positive target, particularly on legitimate crypto services. It stays outside the production phishing runtime.
+
+Aligned independent historical threat-provider observations are absent from both public corpora. The full historical threat-enriched/reputation-only comparison remains unavailable. Today's provider lookups cannot replace old observations without changing the experiment. No dates, labels or research improvements are invented. External, contemporary adjudicated fraud validation is still needed before a broad deployment claim.
+
+Accounts, wallet operations, on-chain tracing, screenshot classification and browser extensions remain outside the agreed controlled FYP scope. Manual app testing follows the recorded developer acceptance checks.

@@ -37,8 +37,13 @@ benchmark-import:
 benchmark-train:
 	$(PYTHON) ml/pipeline.py train --dataset ml/data/phiusiil.csv --split group
 	$(PYTHON) ml/pipeline.py evaluate
+phreshphish-import:
+	$(PYTHON) ml/phreshphish.py --download
+phreshphish-train:
+	$(PYTHON) ml/pipeline.py train --dataset ml/data/phreshphish.csv --validation-start 2025-07-01 --test-start 2025-09-09 --artifacts ml/artifacts/phreshphish-v2
+	$(PYTHON) ml/pipeline.py evaluate --artifacts ml/artifacts/phreshphish-v2
 promote:
-	$(PYTHON) ml/promotion.py
+	$(PYTHON) ml/promotion.py --artifacts "$(or $(ARTIFACTS),ml/artifacts/phreshphish-v2)"
 test-scanner:
 	python3 -m unittest discover -s services/analysis-worker -p 'test_*.py'
 test-isolation:

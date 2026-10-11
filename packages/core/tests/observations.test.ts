@@ -1,6 +1,20 @@
 import { expect, it } from 'vitest';
 import { buildObservationFeatures, featureSchema } from '../src';
 
+it('removes www sampling shortcuts in v2 features without changing the target or legacy schema', () => {
+  const bare = 'https://example.com/login?q=1';
+  const prefixed = 'https://www.example.com/login?q=1';
+  expect(buildObservationFeatures(bare, {}, 'lexical-v2')).toEqual(
+    buildObservationFeatures(prefixed, {}, 'lexical-v2'),
+  );
+  expect(buildObservationFeatures(bare, {}, 'lexical-v1')).not.toEqual(
+    buildObservationFeatures(prefixed, {}, 'lexical-v1'),
+  );
+  expect(
+    buildObservationFeatures('https://www.attacker.example/login', {}, 'hybrid-v2').hostname_length,
+  ).not.toBe(buildObservationFeatures(bare, {}, 'hybrid-v2').hostname_length);
+});
+
 it('encodes missing observations distinctly from a clean observation', () => {
   const absent = buildObservationFeatures('https://example.com/', {}, 'hybrid-v1');
   const present = buildObservationFeatures(

@@ -2,7 +2,7 @@
 
 An explainable website-risk analysis FYP using Next.js, NestJS, PostgreSQL, Redis and scikit-learn. It supports persistent scans, optional isolated static page/domain observations, threat reports and an evaluated phishing model.
 
-**The application and phishing benchmark are implemented. The proposal's broader hybrid fraud-detection research is not complete.** Historical phishing results do not establish deceptive-store or investment-scam performance. See [current status](docs/IMPLEMENTATION_STATUS.md) and [verification evidence](docs/evidence/verification.md).
+**The application has a corrected, temporally evaluated phishing model, working Google verification, and a locally verified isolated scanner.** Separate archived store/investment/crypto experiments measure broader signals; they do not establish universal fraud detection. See [current status](docs/IMPLEMENTATION_STATUS.md) and [verification evidence](docs/evidence/verification.md).
 
 ## Run locally
 
@@ -20,21 +20,24 @@ Open http://127.0.0.1:3000. Configuration loads from the root `.env`. For all ap
 
 ## Enable the evaluated model
 
-The evaluated bundle is installed locally in `ml/production/`. Set `ENABLE_ML=true` in `.env` and restart the API. `/api/v1/model-info` shows the actual version, threshold, scope, provenance and metrics. Inference uses `.venv/bin/python` on the host; Compose includes its Python runtime and mounts the bundle read-only. If the runtime, bundle or schema is unavailable, reports show missing ML evidence. First-time numerical-library startup can exceed the ten-second inference deadline; such scans remain unavailable and can be resubmitted.
+The evaluated bundle is installed locally in `ml/production/`. Set `ENABLE_ML=true` in `.env` and restart the API. `/api/v1/model-info` shows the actual version, threshold, scope, provenance and metrics. Inference uses `.venv/bin/python` on the host; Compose includes its Python runtime and mounts the bundle read-only. If the runtime, bundle or schema is unavailable, reports show missing ML evidence. First-time numerical-library startup can exceed the 30-second inference deadline; such scans remain unavailable and can be resubmitted.
 
-To reproduce the public experiment without visiting any listed URL:
+To reproduce the current public experiment without visiting any listed URL:
 
 ```bash
-mkdir -p ml/data
-curl --fail --location 'https://archive.ics.uci.edu/static/public/967/phiusiil%2Bphishing%2Burl%2Bdataset.zip' -o ml/data/phiusiil.zip
-make benchmark-import
-make benchmark-train
+.venv/bin/python -m pip install -r ml/research-requirements.txt
+make phreshphish-import
+make phreshphish-train
 make promote
 ```
 
-The dataset is [UCI PhiUSIIL](https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset), Prasad and Chandra (2024), CC BY 4.0. Its original labels are inverted to this project's `0=legitimate, 1=phishing`. The importer records hashes, deduplication and exclusions. The 234,661 retained examples have no observation dates: evaluation uses domain-disjoint groups, not a temporal holdout. See [dataset card](docs/DATASET_CARD.md), [model card](docs/MODEL_CARD.md) and [evaluation](docs/EVALUATION.md).
+The current dataset is [PhreshPhish](https://huggingface.co/datasets/phreshphish/phreshphish), CC BY 4.0, pinned to revision `eabec4b7a66324b79cc8a0ad856d1731dc26fe1a`. HTTP range reads retrieve only URL/label/date metadata, excluding the 36 GB HTML corpus. A label-independent hash sample of 150,000 rows retains 148,352 valid canonical records. Custom chronological splits use validation from July 2025 and test from 9 September 2025, purging domain overlap from earlier periods. These are not the paper's original split assignments.
 
-The selected model's phishing F1 is 95.31% and false-positive rate is 2.10% on the 45,589-row holdout. These are historical benchmark measurements. A direct check falsely flags `example.com`; the model is not a website-safety oracle. Model estimates never become verified provider reports.
+The selected sigmoid-calibrated Histogram Gradient Boosting model measures 96.84% phishing precision, 58.41% recall, 72.87% F1 and 1.64% false positives on 36,910 held-out records. Its warning threshold is 76.86%. The lower recall than the older benchmark is reported openly. `example.com` and the benign login development cases are below that threshold; adding `www.` produces identical features and predictions. No domain allowlist or fitted exception is used. Probabilities remain dataset-specific estimates.
+
+The older [UCI PhiUSIIL](https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset) comparison remains in `docs/evidence/benchmark-*.json`. Its source convention (every legitimate URL prefixed with `www.`) caused a major live-site false positive; that model was replaced. To reproduce UCI separately, download its official archive into `ml/data/phiusiil.zip`, then run `make benchmark-import benchmark-train`. Promotion also requires development regressions to pass.
+
+See [dataset card](docs/DATASET_CARD.md), [model card](docs/MODEL_CARD.md) and [evaluation](docs/EVALUATION.md) for experimental limits and archived fraud evaluation.
 
 ## Optional observations and providers
 
@@ -46,9 +49,9 @@ make test-isolation
 docker compose up -d --build --wait
 ```
 
-The worker pins public DNS addresses, checks connected peers, revalidates redirects, bounds responses and runs unprivileged after installing namespace firewall rules. It inspects static HTML; it does not execute JavaScript or connect wallets. **Docker isolation and live content/RDAP acceptance remain unverified on this workstation because no Docker engine is available.** The isolation probe is also wired into CI.
+The worker pins public DNS addresses, checks connected peers, revalidates redirects, bounds responses and runs unprivileged after installing namespace firewall rules. It inspects static HTML; it does not execute JavaScript or connect wallets. Local Docker firewall and live HTML/DNS/authoritative-RDAP acceptance passed. A dedicated Colima profile `webshield` is installed on this workstation; use `DOCKER_HOST=unix://$HOME/.colima/webshield/docker.sock` when the default Docker context is unavailable. The socket probe also passed in GitHub CI.
 
-`ENABLE_OPENPHISH=true` enables the fixed public-feed lookup. `ENABLE_EXTERNAL_PROVIDERS=true` plus a backend `SAFE_BROWSING_API_KEY` enables Google lookup. Compose forwards these settings. Reports preserve each source's observation time, expiry and availability; expired positives lose current authority. A successful live OpenPhish negative lookup was verified; Google requires credentials that were not supplied. Full URLs may be disclosed to enabled services.
+`ENABLE_OPENPHISH=true` enables the fixed public-feed lookup. `ENABLE_EXTERNAL_PROVIDERS=true` plus a backend `SAFE_BROWSING_API_KEY` enables Google lookup. Compose forwards these settings. Reports preserve each source's observation time, expiry and availability; expired positives lose current authority. A successful live OpenPhish negative lookup was verified; Google live acceptance passed with the locally configured private key: a benign URL returned no match and Google’s public phishing test URL returned SOCIAL_ENGINEERING with an expiry. Run `npm run test:live` to repeat the provider and scanner checks. Full URLs may be disclosed to enabled services.
 
 ## Verification
 
@@ -64,11 +67,11 @@ npm run test:e2e               # running API/frontend; ML/providers disabled for
 make test-isolation           # running Docker analysis profile
 ```
 
-Use `TEST_DATABASE_URL` and `TEST_REDIS_URL` to isolate test services. CI uses PostgreSQL 16 / Redis 7; local acceptance used temporary PostgreSQL 17.9 / Redis 8.6.1. Do not share test queues with other workers.
+Use `TEST_DATABASE_URL` and `TEST_REDIS_URL` to isolate test services. CI uses PostgreSQL 16 / Redis 7; current local integration acceptance uses those PostgreSQL 16 / Redis 7 containers too. Do not share test queues with other workers.
 
 `make ml-smoke` validates the pipeline on 240 artificial examples and writes to `ml/artifacts/`; it replaces experiment outputs there. Preserve real results first. The production bundle is separate and synthetic bundles cannot be promoted. No synthetic metrics are shown as real accuracy.
 
-For dated reviewed data, use `make train DATASET=/path/data.csv VALIDATION_START=YYYY-MM-DD TEST_START=YYYY-MM-DD`, then `make evaluate`. Hybrid experiments accept historical JSONL snapshots through `ml/ablations.py`; all four cumulative schemas share extraction code with production. The selected UCI benchmark lacks those snapshots, so real hybrid comparisons remain pending.
+For dated reviewed data, use `make train DATASET=/path/data.csv VALIDATION_START=YYYY-MM-DD TEST_START=YYYY-MM-DD`, then `make evaluate`. Hybrid experiments accept historical JSONL snapshots through `ml/ablations.py`; all four cumulative schemas share extraction code with production. The older UCI benchmark lacks those snapshots. The separate ScamFerret importer and evaluator use bounded published HTML and recorded WHOIS metadata for store/investment/crypto comparisons; missing historical threat observations remain explicit.
 
 ## Project map
 

@@ -85,7 +85,9 @@ export async function predictRisk(
       process.env.ML_PYTHON || path.join(root, '.venv/bin/python'),
       [path.join(root, 'ml/inference.py'), '--bundle', modelDirectory()],
       {
-        timeout: 10000,
+        // Numerical imports on a cold Linux VM can exceed ten seconds.
+        // Keep a hard subprocess limit while allowing the measured startup cost.
+        timeout: 30000,
         maxBuffer: 65536,
         env: {
           ...process.env,

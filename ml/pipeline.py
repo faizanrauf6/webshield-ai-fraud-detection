@@ -20,7 +20,7 @@ SCHEMA = json.loads((ROOT / 'ml' / 'feature_schema.json').read_text())
 NAMES = SCHEMA['features']
 
 
-def extract_batch(urls: list, skip_invalid=False, schema_version='lexical-v1') -> list[dict]:
+def extract_batch(urls: list, skip_invalid=False, schema_version=SCHEMA['version']) -> list[dict]:
     output = []
     for start in range(0, len(urls), 20000):
         result = subprocess.run(
@@ -47,7 +47,7 @@ def parse_date(value: str) -> str:
         raise ValueError('first_seen_at and split boundaries must be ISO dates.') from error
 
 
-def prepare_rows(rows: list[dict], allow_unknown_dates=False, schema_version='lexical-v1') -> list[dict]:
+def prepare_rows(rows: list[dict], allow_unknown_dates=False, schema_version=SCHEMA['version']) -> list[dict]:
     if not rows:
         raise ValueError('Dataset is empty.')
     for row in rows:
@@ -134,7 +134,7 @@ def synthetic_rows():
     return rows
 
 
-def train(rows, validation_start, test_start, synthetic=False, split_protocol='temporal', max_fpr=0.02, provenance=None, schema_version='lexical-v1'):
+def train(rows, validation_start, test_start, synthetic=False, split_protocol='temporal', max_fpr=0.02, provenance=None, schema_version=SCHEMA['version']):
     import joblib
     import numpy as np
     from sklearn.calibration import CalibratedClassifierCV
@@ -259,6 +259,7 @@ def evaluate():
 
 
 def main():
+    global ARTIFACTS
     parser = argparse.ArgumentParser()
     parser.add_argument('command', choices=['train', 'evaluate', 'smoke'])
     parser.add_argument('--dataset', type=Path)
@@ -266,7 +267,10 @@ def main():
     parser.add_argument('--test-start', default='2026-03-01')
     parser.add_argument('--split', choices=['temporal', 'group'], default='temporal')
     parser.add_argument('--max-fpr', type=float, default=0.02)
+    parser.add_argument('--artifacts', type=Path, default=ARTIFACTS)
+    parser.add_argument('--schema', default=SCHEMA['version'])
     args = parser.parse_args()
+    ARTIFACTS = args.artifacts
     if args.command == 'evaluate':
         evaluate()
     elif args.command == 'smoke':
@@ -278,7 +282,7 @@ def main():
         provenance_path = args.dataset.with_suffix('.provenance.json')
         provenance = json.loads(provenance_path.read_text()) if provenance_path.exists() else None
         train(load_csv(args.dataset), args.validation_start, args.test_start, split_protocol=args.split,
-              max_fpr=args.max_fpr, provenance=provenance)
+              max_fpr=args.max_fpr, provenance=provenance, schema_version=args.schema)
 
 
 if __name__ == '__main__':

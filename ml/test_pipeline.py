@@ -16,7 +16,7 @@ def row(url, label, date, group):
 class PipelineTests(unittest.TestCase):
     def test_features_match_production_typescript(self):
         urls = ['https://example.com/', 'http://shop.example/books/page?q=1', 'https://xn--bcher-kva.de/a%20b', 'https://8.8.8.8/']
-        command = ['node', '--import', 'tsx', '-e', "const {extractFeatures}=require('./packages/core/src/index.ts');console.log(JSON.stringify(JSON.parse(process.argv[1]).map(extractFeatures)))", json.dumps(urls)]
+        command = ['node', '--import', 'tsx', '-e', "const {extractFeatures}=require('./packages/core/src/index.ts');console.log(JSON.stringify(JSON.parse(process.argv[1]).map(url=>extractFeatures(url))))", json.dumps(urls)]
         results = json.loads(subprocess.check_output(command, cwd=ROOT, text=True))
         for url, expected in zip(urls, results):
             self.assertEqual(set(extract_features(url)), set(expected))

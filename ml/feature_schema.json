@@ -1,5 +1,5 @@
 {
-  "version": "lexical-v1",
+  "version": "lexical-v2",
   "features": [
     "url_length",
     "hostname_length",

@@ -24,7 +24,7 @@ The NestJS queue worker shares the API process; target fetching runs in a separa
 
 - `packages/core`: URL policy, versioned numeric features, warning rules and shared observation extraction. No network or persistence access.
 - `apps/api`: validation, TypeORM persistence, BullMQ jobs/recovery, adapter orchestration and serialized reports. Content/domain/provider observations remain attributable and bounded.
-- `services/analysis-worker`: public DNS filtering, pinned connections/peer checks, redirect validation, bounded static HTML and RDAP parsing. Independent kernel egress filtering is required; actual container verification is pending locally.
+- `services/analysis-worker`: public DNS filtering, pinned connections/peer checks, redirect validation, bounded static HTML and RDAP parsing. Independent kernel egress filtering is required; actual container firewall and live HTML/DNS/RDAP verification passed locally.
 - `apps/web`: same-origin proxy, responsive reports/history/research/settings. Evidence renders as text; backend secrets stay server-side.
 - `ml`: published benchmark preparation, connected groups, temporal/group splits, calibration, validation selection, frozen holdout evaluation and controlled promotion. Production invokes only a selected trusted-local bundle with matching schema/checksum.
 
@@ -38,4 +38,4 @@ Migrations use transaction advisory locks; PostgreSQL timestamps match JavaScrip
 
 ## Operational limits
 
-Local shared history has no authentication, automatic retention or tenant boundaries. Rate limiting is per process. The Python subprocess starts per scan, so model startup dominates batch inference timing. Current artifacts are lexical phishing-only. Hybrid schema support is not evidence of hybrid accuracy; it requires reviewed historical snapshots and appropriate labels.
+Local shared history has no authentication, automatic retention or tenant boundaries. Rate limiting is per process. The Python subprocess starts per scan, so model startup dominates batch inference timing. Current artifacts are lexical phishing-only. Separate archived store/investment/crypto URL/domain/content comparisons are measured, but their content model fails the target holdout false-positive rate and stays research-only. Aligned historical threat-provider comparisons remain unavailable.
