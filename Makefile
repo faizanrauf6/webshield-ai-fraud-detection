@@ -1,4 +1,4 @@
-.PHONY: setup dev up down migrate test test-integration test-e2e lint build train evaluate ml-smoke demo-seed
+.PHONY: setup dev up down migrate test test-integration test-e2e lint build train evaluate ml-smoke demo-seed quality-study aligned-plan aligned-source aligned-collect aligned-evaluate test-operational
 PYTHON := .venv/bin/python
 export OMP_NUM_THREADS=1
 export OPENBLAS_NUM_THREADS=1
@@ -50,3 +50,17 @@ test-isolation:
 	python3 services/analysis-worker/verify_isolation.py
 demo-seed:
 	npm run demo-seed
+quality-study:
+	$(PYTHON) ml/quality_study.py
+aligned-plan:
+	$(PYTHON) ml/aligned_evaluation.py --freeze-plan
+	$(PYTHON) ml/external_validation.py --freeze-plan
+aligned-source:
+	$(PYTHON) ml/aligned_sources.py
+aligned-collect:
+	npx tsx scripts/aligned-cohort.ts
+aligned-evaluate:
+	$(PYTHON) ml/aligned_evaluation.py
+	$(PYTHON) ml/external_validation.py
+test-operational:
+	npx tsx scripts/operational-acceptance.ts

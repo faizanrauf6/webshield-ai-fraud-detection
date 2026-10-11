@@ -1,0 +1,232 @@
+{
+  "identity_status": "SAMPLE / DEMONSTRATION \u2014 not actual student or institution details",
+  "cover_metadata_sha256": "0352d78f9214835c450c71f4db5293f6c01e8009aeb7843aa7e272ca9b6185f3",
+  "approval_status": "No student declaration, supervisor approval or academic acceptance has been signed.",
+  "outputs": [
+    {
+      "file": "docs/submission/WebShield_AI_Final_Report.docx",
+      "bytes": 1010926,
+      "sha256": "e5872ea52728b27b28058edb35629799e9073d268d820778c8f95ff8305be526",
+      "source": "docs/FINAL_REPORT.md",
+      "source_sha256": "3c99e7266e48fcdf608ca99bb8f708ab7ae955bd1674956e1d5c758137844a27"
+    },
+    {
+      "file": "docs/submission/WebShield_AI_Final_Report.pdf",
+      "bytes": 1228117,
+      "sha256": "c09d83710eb49353727a909cc6c2a987e395dfe966178e6ea5e887cdc8289ce7",
+      "source": "docs/FINAL_REPORT.md",
+      "source_sha256": "3c99e7266e48fcdf608ca99bb8f708ab7ae955bd1674956e1d5c758137844a27"
+    },
+    {
+      "file": "docs/submission/WebShield_AI_Final_Report.html",
+      "bytes": 1379604,
+      "sha256": "1e3a98301639fde39ac738416a7143c076b9c0a90e6aa86f771eeef9457f94f3",
+      "source": "docs/FINAL_REPORT.md",
+      "source_sha256": "3c99e7266e48fcdf608ca99bb8f708ab7ae955bd1674956e1d5c758137844a27"
+    },
+    {
+      "file": "docs/submission/WebShield_AI_User_Manual.docx",
+      "bytes": 1027380,
+      "sha256": "a787d87eef372cb7ae820532963d482ce81e49f12d816a9a0218d1ef9595348e",
+      "source": "docs/USER_MANUAL.md",
+      "source_sha256": "9742a1310a74c96e78aaa5264833e2e31c7fe8bd82100562f0c3392d4593dfbf"
+    },
+    {
+      "file": "docs/submission/WebShield_AI_User_Manual.pdf",
+      "bytes": 1161952,
+      "sha256": "2c845c60f7f7e633664645b2dafd317d063584e48b46f70e5e67d1699a31b616",
+      "source": "docs/USER_MANUAL.md",
+      "source_sha256": "9742a1310a74c96e78aaa5264833e2e31c7fe8bd82100562f0c3392d4593dfbf"
+    },
+    {
+      "file": "docs/submission/WebShield_AI_User_Manual.html",
+      "bytes": 1368245,
+      "sha256": "5a6d3f7523d80ec88edcf0e98fe5099656b6761d2cc2a618c8ca0a9379443743",
+      "source": "docs/USER_MANUAL.md",
+      "source_sha256": "9742a1310a74c96e78aaa5264833e2e31c7fe8bd82100562f0c3392d4593dfbf"
+    }
+  ],
+  "preserved_proposals": [
+    {
+      "file": "docs/submission/WebShield_AI_FYP_Proposal.docx",
+      "sha256": "413133ecbaadcabff8fcd46743d1fa52f17437ad5d329c07d357d4f52c42d34b"
+    },
+    {
+      "file": "docs/submission/WebShield_AI_FYP_Proposal.html",
+      "sha256": "73355fea28fb725404ac35e422647ee39589e67fa5958868dbfa30087fe44538"
+    },
+    {
+      "file": "docs/submission/WebShield_AI_FYP_Proposal.pdf",
+      "sha256": "86b40141b6c74bee1ccfbb936a44b7ee81d44ed6e207ec5399618214ba9960eb"
+    }
+  ],
+  "assets": [
+    {
+      "file": "docs/assets/architecture.png",
+      "sha256": "993c0b92e130e5bae1441eb9b6fa0c6206a0a220759c4f7d0c177906cfb1bdcf"
+    },
+    {
+      "file": "docs/assets/dashboard-desktop-dark.png",
+      "sha256": "a706775da693f3763c1634f25c0e5bc318edc0aaf99de1fddedffc18482757b7"
+    },
+    {
+      "file": "docs/assets/dashboard-desktop-light.png",
+      "sha256": "efc7806ebe101c8629eed53c7355a6eab38a7042dac13ed920cc52153d15a5b9"
+    },
+    {
+      "file": "docs/assets/dashboard-desktop.png",
+      "sha256": "efc7806ebe101c8629eed53c7355a6eab38a7042dac13ed920cc52153d15a5b9"
+    },
+    {
+      "file": "docs/assets/dashboard-mobile-dark.png",
+      "sha256": "e97b7ef78cfdb959092e3670267be3e4f05b16a3cebb506d0fec0f31181da106"
+    },
+    {
+      "file": "docs/assets/dashboard-mobile-light.png",
+      "sha256": "ee8c2dbff3656b1d1aff09a28286a4b7e156a10af090c4308a45f80824cb8ebd"
+    },
+    {
+      "file": "docs/assets/dashboard-mobile-overview-dark.png",
+      "sha256": "cc4fab289e81ddcae7681c09afba5c56c43d5f63b735018ce0026c1ed9765094"
+    },
+    {
+      "file": "docs/assets/dashboard-mobile-overview-light.png",
+      "sha256": "3cf11b383971610fc9a17f4d85faf2a0252c246948e7e18954070a79ff7acfed"
+    },
+    {
+      "file": "docs/assets/dashboard-mobile.png",
+      "sha256": "ee8c2dbff3656b1d1aff09a28286a4b7e156a10af090c4308a45f80824cb8ebd"
+    },
+    {
+      "file": "docs/assets/database.png",
+      "sha256": "8aa7bbb24991bc6968fc0e4a384afd4032ef6052b85fdacbf6b418f5d990a166"
+    },
+    {
+      "file": "docs/assets/report-benign-dark.png",
+      "sha256": "7c8d90500876265160612ac90ac3c75b1bc33f227976faa1485668df327e7d7f"
+    },
+    {
+      "file": "docs/assets/report-benign-light.png",
+      "sha256": "ac5e2fd2456a9edbd9ba46a924ca431fd232d8d8d68b775f27e4fbef86dc6bd8"
+    },
+    {
+      "file": "docs/assets/report-benign-mobile-dark.png",
+      "sha256": "beea12eb54e6bd907c2f12984f950f87676b9dfb3ff4188460f4df0826489709"
+    },
+    {
+      "file": "docs/assets/report-benign-mobile-light.png",
+      "sha256": "083074e74b782443872181cd9513a8d9c9886e2286643d693c571faae5cb3ef3"
+    },
+    {
+      "file": "docs/assets/report-benign-overview-dark.png",
+      "sha256": "b17e1a5d9e9093ba1418fbdf561d5e0115b63e26e90d097c81922d94894049c4"
+    },
+    {
+      "file": "docs/assets/report-benign-overview-light.png",
+      "sha256": "b3f8e3475f57ea53e7b5e7e3e4b6919dd9b37a4ea5f9e00a45d809c7bdfa8dea"
+    },
+    {
+      "file": "docs/assets/report-synthetic-dark.png",
+      "sha256": "296ee9c735ed2ed2f9c2347a0fbd913190e433ed77be6aa675c1729dc6122b24"
+    },
+    {
+      "file": "docs/assets/report-synthetic-light.png",
+      "sha256": "e2edabdb9e67ef1c5d2bfb93fa33f86db0f26fd741f24f8711c7e9237df4c0ae"
+    },
+    {
+      "file": "docs/assets/report-synthetic-mobile-dark.png",
+      "sha256": "a784052aed4f7a6c45b1218232ce17319b939373c6b1228875548483a7857283"
+    },
+    {
+      "file": "docs/assets/report-synthetic-mobile-light.png",
+      "sha256": "246666bc36e1296db84e7702e651b31127b631b9e0c88ec1e8c7a95d5b2f4627"
+    },
+    {
+      "file": "docs/assets/report-synthetic-overview-dark.png",
+      "sha256": "94bdd8abe660d5aacd385853454c1a88371fab7a645c844bc8655c4d534b5bcb"
+    },
+    {
+      "file": "docs/assets/report-synthetic-overview-light.png",
+      "sha256": "624ed09617067e9253178d9e4914a675f5bca753589a23f16de4edfaea910281"
+    }
+  ],
+  "builder": {
+    "file": "scripts/build-submission.py",
+    "sha256": "5769f6a8d5c1ea810f915c00ece94e03c9558020d00f92e36c75649c472379c1",
+    "requirements_file": "docs/submission/build-requirements.txt",
+    "requirements_sha256": "57222d7369babd36994d139024bc31a7fa71948a240084b457d1dc5cd723960b"
+  },
+  "companion_documents": [
+    {
+      "file": "docs/DEPLOYMENT_CHECKLIST.md",
+      "sha256": "f59322999c8c0aeeb6020c9bc1ae5100372c1037d766827c41574169e80461d5"
+    },
+    {
+      "file": "docs/ACCEPTANCE_CHECKLIST.md",
+      "sha256": "45ce92ee09a668f74e2d2f80e4996abdc376631be5f95f8dc7e6ab23913c85a2"
+    },
+    {
+      "file": "docs/submission/README.md",
+      "sha256": "913a7734d46332b60ff71de39a7e4d83e923fae5a515e6493252734a5ed465a7"
+    }
+  ],
+  "capture_metadata_sha256": "808a2d094bcd2f6659a81fbe64f40f211107f1421387300a90c8b8bb175a40c6",
+  "referenced_evidence": [
+    {
+      "file": "docs/evidence/phreshphish-provenance.json",
+      "sha256": "7159963540bf0abae0fb35dbd362323b2dc735563fde86b0b917c5eeab16c6a2"
+    },
+    {
+      "file": "docs/evidence/phreshphish-evaluation.json",
+      "sha256": "b6e157ec40f05911a73551e82550e6b6bf0063c562e3323f2d4f39a74fc15447"
+    },
+    {
+      "file": "docs/evidence/scamferret-provenance.json",
+      "sha256": "4bb435a2fa27aa0328a0c245bb150f2e3f596adc919e12497cbfb5506d5fef59"
+    },
+    {
+      "file": "docs/evidence/scamferret-ablations.json",
+      "sha256": "4371c4fcc4b4f45a85029531610de11713532269fffd61cbbe5e4b609c9b2e29"
+    },
+    {
+      "file": "docs/evidence/benchmark-provenance.json",
+      "sha256": "97686a39ca9a606260e1f07b19259a2e3be76475235c6325d8daa7022157281d"
+    },
+    {
+      "file": "docs/evidence/benchmark-evaluation.json",
+      "sha256": "24cf3c0aa979e6d48747014b56d718b7b461db8198620b1e17c8e86c50828828"
+    },
+    {
+      "file": "docs/evidence/model-development-checks.json",
+      "sha256": "d8a1024b4cc2bea93a2c3536fb14cf0c706eb4efe19c7cecbea8f2890f73aeeb"
+    },
+    {
+      "file": "docs/evidence/installed-model-workflow-v2.json",
+      "sha256": "69146cb1c6f2c6efb6d5eaac53b65b1233e33f6c81f17425f531d7f8b1afa3b9"
+    },
+    {
+      "file": "docs/evidence/live-acceptance.json",
+      "sha256": "d661ccb5d0a1ccd0fcbbb79676403c0532bdfb5d90e79b68a822578be4285083"
+    },
+    {
+      "file": "docs/evidence/model-quality-study.json",
+      "sha256": "7e89706c623c0b5b98a476544c837a09d093c2c6b72961f6ab9f3a543ea20547"
+    },
+    {
+      "file": "docs/evidence/operational-acceptance.json",
+      "sha256": "d91ccb9cd99ca8e91dc74ead6a9c903044ec2cc9eb446cba07f4e1814d98c1b7"
+    },
+    {
+      "file": "docs/evidence/aligned-evaluation.json",
+      "sha256": "b2117d80b6984e94dd37bdd6776f80aaf2f2ebf560bedaf1b98c543e338b8eed"
+    },
+    {
+      "file": "docs/evidence/external-model-validation.json",
+      "sha256": "bf42d48d2f0b115e6035b4ba7cd5d976b1391c86a53c24809850fcab0980dfdb"
+    },
+    {
+      "file": "docs/evidence/final-research-review.md",
+      "sha256": "4ea179c4d19c73af055528c1eb76ddd3a52f6c015e365f07a033e73c42904c74"
+    }
+  ]
+}

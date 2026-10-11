@@ -1,0 +1,1170 @@
+{
+  "checked_at": "2026-10-11T21:26:33.180Z",
+  "acceptance_kind": "Developer exploratory acceptance; no end-user signoff inferred.",
+  "runtime": {
+    "node": "v24.14.0",
+    "platform": "darwin/arm64",
+    "infrastructure": "Dedicated Colima webshield VM, 2 CPUs, 4 GiB; PostgreSQL 16, Redis 7.",
+    "baseline_api": "http://127.0.0.1:4003/api/v1",
+    "live_api": "http://127.0.0.1:4000/api/v1",
+    "database": "Unique disposable webshield_operational_<timestamp>_test",
+    "redis_database": 3,
+    "flags": {
+      "ENABLE_CONTENT_SCANNING": "false",
+      "ENABLE_DOMAIN_INTELLIGENCE": "false",
+      "ENABLE_EXTERNAL_PROVIDERS": "false",
+      "ENABLE_OPENPHISH": "false",
+      "ENABLE_ML": "false"
+    },
+    "worker_concurrency": 2,
+    "submission_timeout_ms": 10000,
+    "terminal_timeout_ms": 90000,
+    "poll_interval_ms": 100,
+    "live_requested": true,
+    "browser_requested": true
+  },
+  "limits": [
+    "Six sequential and six concurrent baseline submissions; this bounded run is not a capacity or long-duration soak test.",
+    "Baseline URL cases do not fetch target sites or providers; synthetic fixtures have explicit demo labels.",
+    "Host Node API plus VM database/Redis differs from the all-container production deployment.",
+    "Crash recovery covers queued persistence and a missing queue job; no live infrastructure service is restarted.",
+    "Unavailable optional checks must remain visible; partial is not a failed HTTP request or a clean security result.",
+    "Live model probabilities are observations, not ground-truth accuracy labels or safety guarantees."
+  ],
+  "health": {
+    "status": "ok",
+    "database": "connected",
+    "queue": "connected",
+    "content_scanning": false
+  },
+  "baseline": {
+    "sequential": {
+      "summary": {
+        "count": 6,
+        "median_ms": 118.82,
+        "p95_ms": 161.84,
+        "max_ms": 161.84,
+        "terminal_status_counts": {
+          "partial": 6
+        },
+        "failed_scans": 0,
+        "timeouts": 0,
+        "http_errors": 0,
+        "missing_check_counts": {
+          "Domain intelligence: unavailable": 6,
+          "Threat intelligence: unavailable": 6,
+          "Page content: skipped": 3,
+          "Cryptocurrency indicators: skipped": 3,
+          "Machine learning: unavailable": 6
+        },
+        "percentiles": "Median averages the middle pair; p95 is nearest rank; polling interval 100ms."
+      },
+      "scans": [
+        {
+          "url": "https://example.com/",
+          "fixture": null,
+          "demo": false,
+          "scan_id": "1330a089-e399-43ed-ab0f-e2e09ae0c1ac",
+          "submit_ms": 52.37,
+          "end_to_end_ms": 161.84,
+          "queue_ms": 39,
+          "processing_ms": 3,
+          "status": "partial",
+          "category": "inconclusive",
+          "model_probability": null,
+          "error": null,
+          "checks": [
+            {
+              "name": "URL analysis",
+              "status": "completed"
+            },
+            {
+              "name": "Domain intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Threat intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Page content",
+              "status": "skipped"
+            },
+            {
+              "name": "Cryptocurrency indicators",
+              "status": "skipped"
+            },
+            {
+              "name": "Machine learning",
+              "status": "unavailable"
+            }
+          ],
+          "providers": []
+        },
+        {
+          "url": "https://example.org/",
+          "fixture": null,
+          "demo": false,
+          "scan_id": "d52d4eb5-38ec-4146-be42-04d2295c1a47",
+          "submit_ms": 8.43,
+          "end_to_end_ms": 117.69,
+          "queue_ms": 20,
+          "processing_ms": 2,
+          "status": "partial",
+          "category": "inconclusive",
+          "model_probability": null,
+          "error": null,
+          "checks": [
+            {
+              "name": "URL analysis",
+              "status": "completed"
+            },
+            {
+              "name": "Domain intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Threat intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Page content",
+              "status": "skipped"
+            },
+            {
+              "name": "Cryptocurrency indicators",
+              "status": "skipped"
+            },
+            {
+              "name": "Machine learning",
+              "status": "unavailable"
+            }
+          ],
+          "providers": []
+        },
+        {
+          "url": "https://github.com/",
+          "fixture": null,
+          "demo": false,
+          "scan_id": "851ee446-603c-49a1-98cb-778931054112",
+          "submit_ms": 6.87,
+          "end_to_end_ms": 119.96,
+          "queue_ms": 8,
+          "processing_ms": 1,
+          "status": "partial",
+          "category": "inconclusive",
+          "model_probability": null,
+          "error": null,
+          "checks": [
+            {
+              "name": "URL analysis",
+              "status": "completed"
+            },
+            {
+              "name": "Domain intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Threat intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Page content",
+              "status": "skipped"
+            },
+            {
+              "name": "Cryptocurrency indicators",
+              "status": "skipped"
+            },
+            {
+              "name": "Machine learning",
+              "status": "unavailable"
+            }
+          ],
+          "providers": []
+        },
+        {
+          "url": "https://store-demo.example/",
+          "fixture": "benign",
+          "demo": true,
+          "scan_id": "b761414a-8255-4e02-a6ad-9fb7d0318e57",
+          "submit_ms": 10.56,
+          "end_to_end_ms": 117.16,
+          "queue_ms": 12,
+          "processing_ms": 1,
+          "status": "partial",
+          "category": "inconclusive",
+          "model_probability": null,
+          "error": null,
+          "checks": [
+            {
+              "name": "URL analysis",
+              "status": "completed"
+            },
+            {
+              "name": "Domain intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Threat intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Page content",
+              "status": "completed"
+            },
+            {
+              "name": "Cryptocurrency indicators",
+              "status": "completed"
+            },
+            {
+              "name": "Machine learning",
+              "status": "unavailable"
+            }
+          ],
+          "providers": []
+        },
+        {
+          "url": "https://login-demo.example/",
+          "fixture": "phishing",
+          "demo": true,
+          "scan_id": "7c7e5e46-473c-4bf8-a122-6795afcebec9",
+          "submit_ms": 7.71,
+          "end_to_end_ms": 116.05,
+          "queue_ms": 9,
+          "processing_ms": 2,
+          "status": "partial",
+          "category": "inconclusive",
+          "model_probability": null,
+          "error": null,
+          "checks": [
+            {
+              "name": "URL analysis",
+              "status": "completed"
+            },
+            {
+              "name": "Domain intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Threat intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Page content",
+              "status": "completed"
+            },
+            {
+              "name": "Cryptocurrency indicators",
+              "status": "completed"
+            },
+            {
+              "name": "Machine learning",
+              "status": "unavailable"
+            }
+          ],
+          "providers": []
+        },
+        {
+          "url": "https://investment-demo.example/",
+          "fixture": "investment",
+          "demo": true,
+          "scan_id": "b7903686-1660-4175-8067-4352e34fedfd",
+          "submit_ms": 13.68,
+          "end_to_end_ms": 128.1,
+          "queue_ms": 18,
+          "processing_ms": 5,
+          "status": "partial",
+          "category": "inconclusive",
+          "model_probability": null,
+          "error": null,
+          "checks": [
+            {
+              "name": "URL analysis",
+              "status": "completed"
+            },
+            {
+              "name": "Domain intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Threat intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Page content",
+              "status": "completed"
+            },
+            {
+              "name": "Cryptocurrency indicators",
+              "status": "completed"
+            },
+            {
+              "name": "Machine learning",
+              "status": "unavailable"
+            }
+          ],
+          "providers": []
+        }
+      ]
+    },
+    "concurrent": {
+      "submitted_concurrency": 6,
+      "batch_elapsed_ms": 169.93,
+      "summary": {
+        "count": 6,
+        "median_ms": 168.28,
+        "p95_ms": 168.67,
+        "max_ms": 168.67,
+        "terminal_status_counts": {
+          "partial": 6
+        },
+        "failed_scans": 0,
+        "timeouts": 0,
+        "http_errors": 0,
+        "missing_check_counts": {
+          "Domain intelligence: unavailable": 6,
+          "Threat intelligence: unavailable": 6,
+          "Page content: skipped": 3,
+          "Cryptocurrency indicators: skipped": 3,
+          "Machine learning: unavailable": 6
+        },
+        "percentiles": "Median averages the middle pair; p95 is nearest rank; polling interval 100ms."
+      },
+      "scans": [
+        {
+          "url": "https://example.com/",
+          "fixture": null,
+          "demo": false,
+          "scan_id": "a4eec674-d9d8-443e-a757-de1b6d8f62ba",
+          "submit_ms": 25.08,
+          "end_to_end_ms": 133.73,
+          "queue_ms": 28,
+          "processing_ms": 17,
+          "status": "partial",
+          "category": "inconclusive",
+          "model_probability": null,
+          "error": null,
+          "checks": [
+            {
+              "name": "URL analysis",
+              "status": "completed"
+            },
+            {
+              "name": "Domain intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Threat intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Page content",
+              "status": "skipped"
+            },
+            {
+              "name": "Cryptocurrency indicators",
+              "status": "skipped"
+            },
+            {
+              "name": "Machine learning",
+              "status": "unavailable"
+            }
+          ],
+          "providers": []
+        },
+        {
+          "url": "https://example.org/",
+          "fixture": null,
+          "demo": false,
+          "scan_id": "52e5fc21-bcc6-4515-966a-d3006d4914d2",
+          "submit_ms": 26.53,
+          "end_to_end_ms": 137,
+          "queue_ms": 56,
+          "processing_ms": 5,
+          "status": "partial",
+          "category": "inconclusive",
+          "model_probability": null,
+          "error": null,
+          "checks": [
+            {
+              "name": "URL analysis",
+              "status": "completed"
+            },
+            {
+              "name": "Domain intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Threat intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Page content",
+              "status": "skipped"
+            },
+            {
+              "name": "Cryptocurrency indicators",
+              "status": "skipped"
+            },
+            {
+              "name": "Machine learning",
+              "status": "unavailable"
+            }
+          ],
+          "providers": []
+        },
+        {
+          "url": "https://github.com/",
+          "fixture": null,
+          "demo": false,
+          "scan_id": "1073aff4-0fab-4e07-8136-557effd7f4c0",
+          "submit_ms": 63,
+          "end_to_end_ms": 168.65,
+          "queue_ms": 74,
+          "processing_ms": 2,
+          "status": "partial",
+          "category": "inconclusive",
+          "model_probability": null,
+          "error": null,
+          "checks": [
+            {
+              "name": "URL analysis",
+              "status": "completed"
+            },
+            {
+              "name": "Domain intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Threat intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Page content",
+              "status": "skipped"
+            },
+            {
+              "name": "Cryptocurrency indicators",
+              "status": "skipped"
+            },
+            {
+              "name": "Machine learning",
+              "status": "unavailable"
+            }
+          ],
+          "providers": []
+        },
+        {
+          "url": "https://store-demo.example/",
+          "fixture": "benign",
+          "demo": true,
+          "scan_id": "c207b21c-c531-4a9a-a599-0e3f7a7f6626",
+          "submit_ms": 64.05,
+          "end_to_end_ms": 168.67,
+          "queue_ms": 73,
+          "processing_ms": 2,
+          "status": "partial",
+          "category": "inconclusive",
+          "model_probability": null,
+          "error": null,
+          "checks": [
+            {
+              "name": "URL analysis",
+              "status": "completed"
+            },
+            {
+              "name": "Domain intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Threat intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Page content",
+              "status": "completed"
+            },
+            {
+              "name": "Cryptocurrency indicators",
+              "status": "completed"
+            },
+            {
+              "name": "Machine learning",
+              "status": "unavailable"
+            }
+          ],
+          "providers": []
+        },
+        {
+          "url": "https://login-demo.example/",
+          "fixture": "phishing",
+          "demo": true,
+          "scan_id": "1e6c9ff3-bc24-44ea-9ff6-e55100a4ee4d",
+          "submit_ms": 61.03,
+          "end_to_end_ms": 167.91,
+          "queue_ms": 57,
+          "processing_ms": 3,
+          "status": "partial",
+          "category": "inconclusive",
+          "model_probability": null,
+          "error": null,
+          "checks": [
+            {
+              "name": "URL analysis",
+              "status": "completed"
+            },
+            {
+              "name": "Domain intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Threat intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Page content",
+              "status": "completed"
+            },
+            {
+              "name": "Cryptocurrency indicators",
+              "status": "completed"
+            },
+            {
+              "name": "Machine learning",
+              "status": "unavailable"
+            }
+          ],
+          "providers": []
+        },
+        {
+          "url": "https://investment-demo.example/",
+          "fixture": "investment",
+          "demo": true,
+          "scan_id": "4061cf77-5b66-4f69-9fde-4348208378e8",
+          "submit_ms": 61.45,
+          "end_to_end_ms": 168.65,
+          "queue_ms": 55,
+          "processing_ms": 3,
+          "status": "partial",
+          "category": "inconclusive",
+          "model_probability": null,
+          "error": null,
+          "checks": [
+            {
+              "name": "URL analysis",
+              "status": "completed"
+            },
+            {
+              "name": "Domain intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Threat intelligence",
+              "status": "unavailable"
+            },
+            {
+              "name": "Page content",
+              "status": "completed"
+            },
+            {
+              "name": "Cryptocurrency indicators",
+              "status": "completed"
+            },
+            {
+              "name": "Machine learning",
+              "status": "unavailable"
+            }
+          ],
+          "providers": []
+        }
+      ]
+    }
+  },
+  "validation": [
+    {
+      "url": "http://127.0.0.1/",
+      "http_status": 400,
+      "rejected": true
+    },
+    {
+      "url": "file:///etc/passwd",
+      "http_status": 400,
+      "rejected": true
+    },
+    {
+      "url": "http://169.254.169.254/",
+      "http_status": 400,
+      "rejected": true
+    }
+  ],
+  "persistence": {
+    "exact_json_export": true,
+    "attachment_filename": true,
+    "distinct_resubmission": true,
+    "paginated_history_no_duplicates": true,
+    "history_total_before_recovery": 13
+  },
+  "recovery": {
+    "isolated_api_sigkill": true,
+    "killed_api_socket_closed_before_restart": true,
+    "database_persisted_queued_count": 2,
+    "removed_queue_job_count": 1,
+    "retained_queue_job_count": 1,
+    "recovered_count": 2,
+    "statuses": ["partial", "partial"],
+    "restart_to_terminal_ms": 1434.03,
+    "live_services_restarted": false
+  },
+  "browser": {
+    "exit_code": 0,
+    "elapsed_ms": 37283.25,
+    "stats": {
+      "startTime": "2026-10-11T21:26:41.117Z",
+      "duration": 36850.462,
+      "expected": 20,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "scenarios": [
+      {
+        "title": "submit URL, inspect truthful report, export and find history",
+        "tests": [
+          {
+            "project": "desktop",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "crypto fixture is explicitly synthetic and displays address table",
+        "tests": [
+          {
+            "project": "desktop",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "unsafe URL is rejected with accessible error",
+        "tests": [
+          {
+            "project": "desktop",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "research and settings disclose missing model and providers; no horizontal overflow",
+        "tests": [
+          {
+            "project": "desktop",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "core pages meet automated accessibility checks and fit the viewport",
+        "tests": [
+          {
+            "project": "desktop",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "live reports show suspicious evidence and correct OpenPhish attribution",
+        "tests": [
+          {
+            "project": "desktop",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "installed model estimates and measured research results are visible with their scope",
+        "tests": [
+          {
+            "project": "desktop",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "submit URL, inspect truthful report, export and find history",
+        "tests": [
+          {
+            "project": "mobile",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "crypto fixture is explicitly synthetic and displays address table",
+        "tests": [
+          {
+            "project": "mobile",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "unsafe URL is rejected with accessible error",
+        "tests": [
+          {
+            "project": "mobile",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "research and settings disclose missing model and providers; no horizontal overflow",
+        "tests": [
+          {
+            "project": "mobile",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "core pages meet automated accessibility checks and fit the viewport",
+        "tests": [
+          {
+            "project": "mobile",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "live reports show suspicious evidence and correct OpenPhish attribution",
+        "tests": [
+          {
+            "project": "mobile",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "installed model estimates and measured research results are visible with their scope",
+        "tests": [
+          {
+            "project": "mobile",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "theme follows the device until a manual choice is made",
+        "tests": [
+          {
+            "project": "desktop",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "theme switches even when browser storage is unavailable",
+        "tests": [
+          {
+            "project": "desktop",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "both themes keep core pages readable, accessible and inside the viewport",
+        "tests": [
+          {
+            "project": "desktop",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "theme follows the device until a manual choice is made",
+        "tests": [
+          {
+            "project": "mobile",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "theme switches even when browser storage is unavailable",
+        "tests": [
+          {
+            "project": "mobile",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "title": "both themes keep core pages readable, accessible and inside the viewport",
+        "tests": [
+          {
+            "project": "mobile",
+            "status": "passed"
+          }
+        ]
+      }
+    ],
+    "baseline_api": "http://127.0.0.1:4001",
+    "frontend": "http://127.0.0.1:3002"
+  },
+  "result": "passed",
+  "elapsed_ms": 44929.25,
+  "cleanup": {
+    "isolated_api_stopped": true,
+    "isolated_frontend_stopped": true,
+    "disposable_database_removed": true,
+    "owned_queue_removed": true
+  },
+  "live": {
+    "checked_at": "2026-10-11T21:27:53.434Z",
+    "configuration": {
+      "health": {
+        "status": "ok",
+        "database": "connected",
+        "queue": "connected",
+        "content_scanning": true
+      },
+      "providers": {
+        "content_scanning": true,
+        "providers": [
+          {
+            "name": "OpenPhish Community Feed",
+            "configured": true,
+            "enabled": true,
+            "purpose": "Exact URL phishing reports; limited feed, refreshed every 12 hours; academic/personal research only"
+          },
+          {
+            "name": "Google Safe Browsing",
+            "configured": true,
+            "enabled": true,
+            "purpose": "Known malicious URL lookup"
+          },
+          {
+            "name": "DNS / RDAP",
+            "configured": true,
+            "enabled": true,
+            "purpose": "Public DNS and authoritative registration metadata via isolated worker"
+          },
+          {
+            "name": "Crypto reports",
+            "configured": false,
+            "enabled": false,
+            "purpose": "Reported wallet / URL abuse (not configured)"
+          }
+        ],
+        "privacy": "Submitted URLs and reports are stored in this local deployment. Remove secrets from URL query strings. When enabled, the external provider receives the full normalized URL."
+      }
+    },
+    "summary": {
+      "count": 3,
+      "median_ms": 5412.8,
+      "p95_ms": 7011.7,
+      "max_ms": 7011.7,
+      "terminal_status_counts": {
+        "completed": 3
+      },
+      "failed_scans": 0,
+      "timeouts": 0,
+      "http_errors": 0,
+      "missing_check_counts": {},
+      "percentiles": "Median averages the middle pair; p95 is nearest rank; polling interval 100ms."
+    },
+    "scans": [
+      {
+        "url": "https://example.com/",
+        "fixture": null,
+        "demo": false,
+        "scan_id": "5ab39672-72df-491b-839e-5a54e714e5cf",
+        "submit_ms": 138.06,
+        "end_to_end_ms": 7011.7,
+        "queue_ms": 113,
+        "processing_ms": 6799,
+        "status": "completed",
+        "category": "low_observed_risk",
+        "model_probability": 0.36537215394134553,
+        "error": null,
+        "checks": [
+          {
+            "name": "URL analysis",
+            "status": "completed"
+          },
+          {
+            "name": "Domain intelligence",
+            "status": "completed"
+          },
+          {
+            "name": "Threat intelligence",
+            "status": "completed"
+          },
+          {
+            "name": "Page content",
+            "status": "completed"
+          },
+          {
+            "name": "Cryptocurrency indicators",
+            "status": "completed"
+          },
+          {
+            "name": "Machine learning",
+            "status": "completed"
+          },
+          {
+            "name": "Domain registration",
+            "status": "completed"
+          },
+          {
+            "name": "Provider: OpenPhish Community Feed",
+            "status": "completed"
+          },
+          {
+            "name": "Provider: Google Safe Browsing",
+            "status": "completed"
+          }
+        ],
+        "providers": [
+          {
+            "source": "OpenPhish Community Feed",
+            "status": "completed",
+            "reportedMalicious": false
+          },
+          {
+            "source": "Google Safe Browsing",
+            "status": "completed",
+            "reportedMalicious": false
+          }
+        ]
+      },
+      {
+        "url": "https://example.org/",
+        "fixture": null,
+        "demo": false,
+        "scan_id": "c3872cb4-d02e-454b-8be5-973db48598c1",
+        "submit_ms": 14.77,
+        "end_to_end_ms": 5412.8,
+        "queue_ms": 6,
+        "processing_ms": 5266,
+        "status": "completed",
+        "category": "low_observed_risk",
+        "model_probability": 0.3705357052488013,
+        "error": null,
+        "checks": [
+          {
+            "name": "URL analysis",
+            "status": "completed"
+          },
+          {
+            "name": "Domain intelligence",
+            "status": "completed"
+          },
+          {
+            "name": "Threat intelligence",
+            "status": "completed"
+          },
+          {
+            "name": "Page content",
+            "status": "completed"
+          },
+          {
+            "name": "Cryptocurrency indicators",
+            "status": "completed"
+          },
+          {
+            "name": "Machine learning",
+            "status": "completed"
+          },
+          {
+            "name": "Domain registration",
+            "status": "completed"
+          },
+          {
+            "name": "Provider: OpenPhish Community Feed",
+            "status": "completed"
+          },
+          {
+            "name": "Provider: Google Safe Browsing",
+            "status": "completed"
+          }
+        ],
+        "providers": [
+          {
+            "source": "OpenPhish Community Feed",
+            "status": "completed",
+            "reportedMalicious": false
+          },
+          {
+            "source": "Google Safe Browsing",
+            "status": "completed",
+            "reportedMalicious": false
+          }
+        ]
+      },
+      {
+        "url": "https://github.com/",
+        "fixture": null,
+        "demo": false,
+        "scan_id": "949afd8f-9eee-4cb3-b1d8-0a1ac3a1796d",
+        "submit_ms": 110.9,
+        "end_to_end_ms": 4980.38,
+        "queue_ms": 57,
+        "processing_ms": 4777,
+        "status": "completed",
+        "category": "low_observed_risk",
+        "model_probability": 0.3705357052488013,
+        "error": null,
+        "checks": [
+          {
+            "name": "URL analysis",
+            "status": "completed"
+          },
+          {
+            "name": "Domain intelligence",
+            "status": "completed"
+          },
+          {
+            "name": "Threat intelligence",
+            "status": "completed"
+          },
+          {
+            "name": "Page content",
+            "status": "completed"
+          },
+          {
+            "name": "Cryptocurrency indicators",
+            "status": "completed"
+          },
+          {
+            "name": "Machine learning",
+            "status": "completed"
+          },
+          {
+            "name": "Domain registration",
+            "status": "completed"
+          },
+          {
+            "name": "Provider: OpenPhish Community Feed",
+            "status": "completed"
+          },
+          {
+            "name": "Provider: Google Safe Browsing",
+            "status": "completed"
+          }
+        ],
+        "providers": [
+          {
+            "source": "OpenPhish Community Feed",
+            "status": "completed",
+            "reportedMalicious": false
+          },
+          {
+            "source": "Google Safe Browsing",
+            "status": "completed",
+            "reportedMalicious": false
+          }
+        ]
+      }
+    ],
+    "elapsed_ms": 17631.33,
+    "limit": "Three sequential public benign reference URL observations; no malicious-target navigation, no live load stress.",
+    "persistence": {
+      "exact_json_export": true,
+      "attachment_filename": true,
+      "three_new_reports_visible_in_history": true,
+      "distinct_existing_prior_submission": true,
+      "prior_scan_id": "f1a88056-a2bb-4765-bd9a-2fafb9cdb714"
+    }
+  },
+  "live_appended_separately": true,
+  "developer_exploration": {
+    "checked_at": "2026-10-11T21:28:36.804Z",
+    "kind": "Developer visual inspection plus real browser navigation; not end-user acceptance signoff.",
+    "viewport": {
+      "width": 390,
+      "height": 664,
+      "device_scale_factor": 3
+    },
+    "scenarios": [
+      {
+        "page": "Overview",
+        "theme": "light",
+        "observations": "Readable text and controls, responsive cards, URL form and clearly labeled synthetic demo shortcuts; history table scrolls within its panel."
+      },
+      {
+        "page": "Synthetic crypto investment report",
+        "theme": "dark",
+        "observations": "Report route opened from overview shortcut; visible Synthetic demo label, Inconclusive assessment, explicit missing-check states, warning evidence and cryptocurrency address candidates."
+      }
+    ],
+    "screenshots": [
+      "/tmp/webshield-operational-mobile-light.png",
+      "/tmp/webshield-operational-mobile-dark-report.png"
+    ],
+    "limitations": "Visual inspection is limited to the two captured mobile pages; route/theme/accessibility assertions across all core pages are covered separately by the 20-case browser run."
+  },
+  "harness_final_recheck": {
+    "checked_at": "2026-10-11T21:29:29.615Z",
+    "result": "passed",
+    "elapsed_ms": 5272.35,
+    "sequential": {
+      "count": 6,
+      "median_ms": 114.05,
+      "p95_ms": 219.14,
+      "max_ms": 219.14,
+      "terminal_status_counts": {
+        "partial": 6
+      },
+      "failed_scans": 0,
+      "timeouts": 0,
+      "http_errors": 0,
+      "missing_check_counts": {
+        "Domain intelligence: unavailable": 6,
+        "Threat intelligence: unavailable": 6,
+        "Page content: skipped": 3,
+        "Cryptocurrency indicators: skipped": 3,
+        "Machine learning: unavailable": 6
+      },
+      "percentiles": "Median averages the middle pair; p95 is nearest rank; polling interval 100ms."
+    },
+    "concurrent": {
+      "count": 6,
+      "median_ms": 138.52,
+      "p95_ms": 139.61,
+      "max_ms": 139.61,
+      "terminal_status_counts": {
+        "partial": 6
+      },
+      "failed_scans": 0,
+      "timeouts": 0,
+      "http_errors": 0,
+      "missing_check_counts": {
+        "Domain intelligence: unavailable": 6,
+        "Threat intelligence: unavailable": 6,
+        "Page content: skipped": 3,
+        "Cryptocurrency indicators: skipped": 3,
+        "Machine learning: unavailable": 6
+      },
+      "percentiles": "Median averages the middle pair; p95 is nearest rank; polling interval 100ms."
+    },
+    "recovery": {
+      "isolated_api_sigkill": true,
+      "killed_api_socket_closed_before_restart": true,
+      "database_persisted_queued_count": 2,
+      "removed_queue_job_count": 1,
+      "retained_queue_job_count": 1,
+      "recovered_count": 2,
+      "statuses": ["partial", "partial"],
+      "restart_to_terminal_ms": 830.43,
+      "live_services_restarted": false
+    },
+    "cleanup": {
+      "isolated_api_stopped": true,
+      "isolated_frontend_stopped": true,
+      "disposable_database_removed": true,
+      "owned_queue_removed": true
+    }
+  }
+}

@@ -12,3 +12,6 @@ test-results
 docs/assets
 
 apps/web/next-env.d.ts
+# Generated document exports; edit their Markdown sources/build script.
+docs/submission/WebShield_AI_Final_Report.html
+docs/submission/WebShield_AI_User_Manual.html

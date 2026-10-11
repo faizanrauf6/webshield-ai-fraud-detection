@@ -1,0 +1,6 @@
+# Document generation only; not application/runtime requirements.
+python-docx==1.2.0
+reportlab==5.0.1
+Markdown==3.11
+Pillow==12.3.0
+lxml==6.1.3

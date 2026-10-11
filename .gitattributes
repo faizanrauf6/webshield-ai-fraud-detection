@@ -1,0 +1,3 @@
+# Generated document exports should be reviewed as artifacts, not text diffs.
+*.pdf binary
+*.docx binary

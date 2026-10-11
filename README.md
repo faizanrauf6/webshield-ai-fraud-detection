@@ -2,7 +2,7 @@
 
 An explainable website-risk analysis FYP using Next.js, NestJS, PostgreSQL, Redis and scikit-learn. It supports persistent scans, optional isolated static page/domain observations, threat reports and an evaluated phishing model.
 
-**The application has a corrected, temporally evaluated phishing model, working Google verification, and a locally verified isolated scanner.** Separate archived store/investment/crypto experiments measure broader signals; they do not establish universal fraud detection. See [current status](docs/IMPLEMENTATION_STATUS.md) and [verification evidence](docs/evidence/verification.md).
+**The controlled FYP application has a temporally evaluated phishing model, working Google verification, an isolated scanner, readable light/dark UI and a submission package.** Separate archived and prospective research studies record measured strengths and failures; they do not establish universal fraud detection. See [current status](docs/IMPLEMENTATION_STATUS.md), [final report](docs/FINAL_REPORT.md) and [user manual](docs/USER_MANUAL.md).
 
 ## Run locally
 
@@ -41,6 +41,8 @@ The older [UCI PhiUSIIL](https://archive.ics.uci.edu/dataset/967/phiusiil+phishi
 
 See [dataset card](docs/DATASET_CARD.md), [model card](docs/MODEL_CARD.md) and [evaluation](docs/EVALUATION.md) for experimental limits and archived fraud evaluation.
 
+The additional frozen [quality study](docs/evidence/model-quality-study.json) improves descriptive phishing recall to 83.53% at 1.82% FPR on the identical previously examined historical holdout, but legitimate HTTP false positives remain 49.18%. It is a research candidate; the installed model is unchanged. Archived missingness-aware modeling reduces false positives while losing recall. Neither result establishes a universally better deployment. [Research reproduction](docs/RESEARCH_REPRODUCTION.md) explains source pins, validation locks, the prospective aligned pilot, external model comparison and missing-data handling.
+
 ## Optional observations and providers
 
 Defaults keep all external integrations off. To collect static page and DNS/RDAP observations, generate a random token of at least 32 characters, store it in `CONTENT_WORKER_TOKEN`, and set the corresponding `ENABLE_CONTENT_SCANNING` / `ENABLE_DOMAIN_INTELLIGENCE` flags. Start the worker before the API:
@@ -71,6 +73,8 @@ make test-isolation           # running Docker analysis profile
 
 Use `TEST_DATABASE_URL` and `TEST_REDIS_URL` to isolate test services. CI uses PostgreSQL 16 / Redis 7; current local integration acceptance uses those PostgreSQL 16 / Redis 7 containers too. Do not share test queues with other workers.
 
+The separate [operational acceptance](docs/evidence/operational-verification.md) records 20 browser passes, twelve bounded baseline timings, two recovered queued scans after an actual API process crash, and three enabled benign scans (median 5.413 s, maximum 7.012 s). This short sample is not a capacity benchmark or human signoff.
+
 `make ml-smoke` validates the pipeline on 240 artificial examples and writes to `ml/artifacts/`; it replaces experiment outputs there. Preserve real results first. The production bundle is separate and synthetic bundles cannot be promoted. No synthetic metrics are shown as real accuracy.
 
 For dated reviewed data, use `make train DATASET=/path/data.csv VALIDATION_START=YYYY-MM-DD TEST_START=YYYY-MM-DD`, then `make evaluate`. Hybrid experiments accept historical JSONL snapshots through `ml/ablations.py`; all four cumulative schemas share extraction code with production. The older UCI benchmark lacks those snapshots. The separate ScamFerret importer and evaluator use bounded published HTML and recorded WHOIS metadata for store/investment/crypto comparisons; missing historical threat observations remain explicit.
@@ -80,3 +84,5 @@ For dated reviewed data, use `make train DATASET=/path/data.csv VALIDATION_START
 `apps/web` contains the frontend; `apps/api` contains persistence, queue and orchestration; `packages/core` contains URL policy, features and screening; `services/analysis-worker` contains isolated collection; `ml` contains training/inference; `docs` contains requirements, evidence and handoff materials.
 
 Use the dashboard's clearly labeled `.example` demonstrations for offline phishing, retail and crypto scenarios. See [API](docs/API.md), [architecture](docs/ARCHITECTURE.md), [threat model](docs/THREAT_MODEL.md) and [FYP defense](docs/FYP_DEFENSE.md).
+
+The [final report](docs/submission/WebShield_AI_Final_Report.pdf) and [manual](docs/submission/WebShield_AI_User_Manual.pdf) have editable DOCX and offline HTML versions alongside them. Cover identities are conspicuously labelled **SAMPLE / DEMONSTRATION**, as requested. [Deployment](docs/DEPLOYMENT_CHECKLIST.md) and [acceptance](docs/ACCEPTANCE_CHECKLIST.md) procedures distinguish executed developer checks from an unsigned academic/user decision.

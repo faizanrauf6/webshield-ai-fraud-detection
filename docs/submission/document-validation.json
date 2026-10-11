@@ -1,0 +1,57 @@
+{
+  "checked_at": "2026-10-11T21:44:12.222150+00:00",
+  "result": "passed",
+  "checks": [
+    "All output/source/metadata/builder/dependency/asset/evidence hashes match manifest",
+    "Sample identities and unsigned acceptance present in PDF/DOCX",
+    "All referenced source images and local Markdown links resolve",
+    "DOCX zip/XML structurally readable",
+    "Offline HTML images embedded and numbered contents links resolve",
+    "Saved screenshot metadata has no viewport overflow"
+  ],
+  "documents": [
+    {
+      "file": "WebShield_AI_Final_Report",
+      "pdf_pages": 28,
+      "docx_paragraphs": 191,
+      "docx_tables": 14,
+      "embedded_docx_images": 5,
+      "html_embedded_images": 5,
+      "pdf_sha256": "c09d83710eb49353727a909cc6c2a987e395dfe966178e6ea5e887cdc8289ce7",
+      "docx_sha256": "e5872ea52728b27b28058edb35629799e9073d268d820778c8f95ff8305be526",
+      "html_sha256": "1e3a98301639fde39ac738416a7143c076b9c0a90e6aa86f771eeef9457f94f3"
+    },
+    {
+      "file": "WebShield_AI_User_Manual",
+      "pdf_pages": 8,
+      "docx_paragraphs": 57,
+      "docx_tables": 3,
+      "embedded_docx_images": 5,
+      "html_embedded_images": 5,
+      "pdf_sha256": "2c845c60f7f7e633664645b2dafd317d063584e48b46f70e5e67d1699a31b616",
+      "docx_sha256": "a787d87eef372cb7ae820532963d482ce81e49f12d816a9a0218d1ef9595348e",
+      "html_sha256": "5a6d3f7523d80ec88edcf0e98fe5099656b6761d2cc2a618c8ca0a9379443743"
+    }
+  ],
+  "screenshots": {
+    "recorded_views": 14,
+    "report_images": 12,
+    "all_recorded_views_fit_viewport": true
+  },
+  "supplied_proposal_sha256": "86b40141b6c74bee1ccfbb936a44b7ee81d44ed6e207ec5399618214ba9960eb",
+  "preserved_proposals": [
+    {
+      "file": "docs/submission/WebShield_AI_FYP_Proposal.docx",
+      "sha256": "413133ecbaadcabff8fcd46743d1fa52f17437ad5d329c07d357d4f52c42d34b"
+    },
+    {
+      "file": "docs/submission/WebShield_AI_FYP_Proposal.html",
+      "sha256": "73355fea28fb725404ac35e422647ee39589e67fa5958868dbfa30087fe44538"
+    },
+    {
+      "file": "docs/submission/WebShield_AI_FYP_Proposal.pdf",
+      "sha256": "86b40141b6c74bee1ccfbb936a44b7ee81d44ed6e207ec5399618214ba9960eb"
+    }
+  ],
+  "visual_review": "Sample cover, paginated contents, architecture/database diagrams, research tables and application screenshots inspected from rendered PDFs/screenshots. DOCX checked structurally; native Microsoft Word pagination not inspected."
+}

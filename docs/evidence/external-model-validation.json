@@ -1,0 +1,1027 @@
+{
+  "scope": "new-source phishing/reference descriptive validation",
+  "production_eligible": false,
+  "implementation_sha256": "1bbf1f78493a758529de50846b5e7f6549002240d8bebcb306ad237adcc195ec",
+  "shared_alignment_implementation_sha256": "5ab87fe3e8967cd0f7dd499a97769f3d0ddee7c7e5b17c6d3a5b8e02a7d5561e",
+  "recorded_at": "2026-10-11T21:40:33.895805+00:00",
+  "frozen_plan": {
+    "version": 1,
+    "production_eligible": false,
+    "candidate": {
+      "path": "ml/artifacts/quality-study/char_lexical_c1.joblib",
+      "sha256": "df2129ebacf5f8ee82079d44590bf426c1a35905a2d7ff523aeed85497a78004",
+      "production_eligible": false
+    },
+    "production_manifest_sha256": "704b5cf198f70425a2f3e32a73f0c0c6f3ccc4d4f7d8da66e8d9072199f8bda5",
+    "historical_source_sha256": "d549e91da4e62e253d34443b3a778c29e62615afddecefe078e9c7f567f3d018",
+    "selection": "Use both previously frozen models and their validation-selected thresholds unchanged; no fitting or recalibration.",
+    "cohorts": [
+      "all candidates",
+      "registrable domains absent from entire historical PhreshPhish metadata sample"
+    ],
+    "limits": [
+      "Famous HTTPS root-page references versus arbitrary positive paths create source/URL convention confounding.",
+      "PhishTank community labels and official-domain identity are not independent current page adjudication.",
+      "This new source pilot does not fix the already measured legitimate HTTP false-positive problem.",
+      "No broad store/investment claim or automatic production promotion."
+    ]
+  },
+  "plan_sha256": "9a0c9817c000bff05326b4e464fc2500a80bf63ac466c3475088098033eb38aa",
+  "dataset_sha256": "6d9f31cdfc52830ead270ab55b606698d0ef80c897a3e3a96c65507e26a7b2e9",
+  "clock_normalization": {
+    "algorithm": "bounded-source-clock-watermark-v1",
+    "max_clock_skew_seconds": 1,
+    "amendment": "After acquisition integrity checks and before model scoring; model/threshold/split policy unchanged.",
+    "raw_rows_immutable": true,
+    "affected_rows": 18,
+    "source_skew": {
+      "domain": {
+        "ahead_of_host_rows": 0,
+        "max_ahead_ms": 0.0
+      },
+      "content": {
+        "ahead_of_host_rows": 18,
+        "max_ahead_ms": 27.576
+      },
+      "provider": {
+        "ahead_of_host_rows": 0,
+        "max_ahead_ms": 0.0
+      }
+    },
+    "semantics": "first_seen_at retains actual host completion; only derived assessment asOf advances to a reported source clock. No capture or attack dates are reconstructed.",
+    "derived_rows_sha256": "dd5f208a6f967b0173f7722c05c82c02a3372365ac4775140e2165bc0defc635"
+  },
+  "production_model_version": "lexical-v2-hist_gradient_boosting-a62d69962e84",
+  "selected_candidate": "char_lexical_c1",
+  "historical_domain_overlap_rows": 76,
+  "cohorts": {
+    "all candidates": {
+      "rows": 200,
+      "positive": 100,
+      "production": {
+        "rows": 200,
+        "threshold": 0.768571778610234,
+        "confusion_matrix": [
+          [100, 0],
+          [38, 62]
+        ],
+        "precision": 1.0,
+        "recall": 0.62,
+        "false_positive_rate": 0.0,
+        "average_precision": 0.9286415449697549,
+        "brier_score": 0.11765015842300382,
+        "wilson_95_descriptive": {
+          "precision": [0.9416559278986275, 0.9999999999999999],
+          "recall": [0.5220975529551107, 0.7090240074752127],
+          "false_positive_rate": [3.469446951953614e-18, 0.03699349820698568]
+        }
+      },
+      "candidate": {
+        "rows": 200,
+        "threshold": 0.5420365515811205,
+        "confusion_matrix": [
+          [88, 12],
+          [19, 81]
+        ],
+        "precision": 0.8709677419354839,
+        "recall": 0.81,
+        "false_positive_rate": 0.12,
+        "average_precision": 0.9496442551607157,
+        "brier_score": 0.08998267155950217,
+        "wilson_95_descriptive": {
+          "precision": [0.7878821193288207, 0.9246226367979565],
+          "recall": [0.7222115462093562, 0.8748524849023126],
+          "false_positive_rate": [0.06999406437019488, 0.19812099426711421]
+        }
+      },
+      "production_error_cohorts": {
+        "https=0": {
+          "rows": 13,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [0, 0],
+            [0, 13]
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "false_positive_rate": null,
+          "average_precision": null,
+          "brier_score": 0.006278197414114394,
+          "wilson_95_descriptive": {
+            "precision": [0.7719046276458016, 0.9999999999999999],
+            "recall": [0.7719046276458016, 0.9999999999999999],
+            "false_positive_rate": null
+          }
+        },
+        "https=1": {
+          "rows": 187,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [100, 0],
+            [38, 49]
+          ],
+          "precision": 1.0,
+          "recall": 0.5632183908045977,
+          "false_positive_rate": 0.0,
+          "average_precision": 0.9107228984947342,
+          "brier_score": 0.12539259421506566,
+          "wilson_95_descriptive": {
+            "precision": [0.9273021807795035, 0.9999999999999999],
+            "recall": [0.4585155432104803, 0.662574542118424],
+            "false_positive_rate": [3.469446951953614e-18, 0.03699349820698568]
+          }
+        },
+        "punycode=0": {
+          "rows": 200,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [100, 0],
+            [38, 62]
+          ],
+          "precision": 1.0,
+          "recall": 0.62,
+          "false_positive_rate": 0.0,
+          "average_precision": 0.9286415449697549,
+          "brier_score": 0.11765015842300382,
+          "wilson_95_descriptive": {
+            "precision": [0.9416559278986275, 0.9999999999999999],
+            "recall": [0.5220975529551107, 0.7090240074752127],
+            "false_positive_rate": [3.469446951953614e-18, 0.03699349820698568]
+          }
+        },
+        "ip_literal=0": {
+          "rows": 200,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [100, 0],
+            [38, 62]
+          ],
+          "precision": 1.0,
+          "recall": 0.62,
+          "false_positive_rate": 0.0,
+          "average_precision": 0.9286415449697549,
+          "brier_score": 0.11765015842300382,
+          "wilson_95_descriptive": {
+            "precision": [0.9416559278986275, 0.9999999999999999],
+            "recall": [0.5220975529551107, 0.7090240074752127],
+            "false_positive_rate": [3.469446951953614e-18, 0.03699349820698568]
+          }
+        },
+        "content_available=0": {
+          "rows": 159,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [67, 0],
+            [33, 59]
+          ],
+          "precision": 1.0,
+          "recall": 0.6413043478260869,
+          "false_positive_rate": 0.0,
+          "average_precision": 0.9478327579389677,
+          "brier_score": 0.11481128907146353,
+          "wilson_95_descriptive": {
+            "precision": [0.9388706294732116, 1.0],
+            "recall": [0.5394527182418936, 0.7318286282643436],
+            "false_positive_rate": [0.0, 0.05422613939130178]
+          }
+        },
+        "content_available=1": {
+          "rows": 41,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [33, 0],
+            [5, 3]
+          ],
+          "precision": 1.0,
+          "recall": 0.375,
+          "false_positive_rate": 0.0,
+          "average_precision": 0.6996039191161143,
+          "brier_score": 0.12865943224970894,
+          "wilson_95_descriptive": {
+            "precision": [0.4385029682449546, 1.0],
+            "recall": [0.13684428582359742, 0.6942576053973727],
+            "false_positive_rate": [0.0, 0.10426999754245206]
+          }
+        },
+        "domain_age_known=0": {
+          "rows": 151,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [70, 0],
+            [29, 52]
+          ],
+          "precision": 1.0,
+          "recall": 0.6419753086419753,
+          "false_positive_rate": 0.0,
+          "average_precision": 0.9462289673739255,
+          "brier_score": 0.11132578667966953,
+          "wilson_95_descriptive": {
+            "precision": [0.9312077638761376, 1.0],
+            "recall": [0.533330621472244, 0.7377632555037368],
+            "false_positive_rate": [0.0, 0.05202306241026692]
+          }
+        },
+        "domain_age_known=1": {
+          "rows": 49,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [30, 0],
+            [9, 10]
+          ],
+          "precision": 1.0,
+          "recall": 0.5263157894736842,
+          "false_positive_rate": 0.0,
+          "average_precision": 0.8404014604617853,
+          "brier_score": 0.13713954889736057,
+          "wilson_95_descriptive": {
+            "precision": [0.7224672001371107, 0.9999999999999999],
+            "recall": [0.3170780924511316, 0.7267019483882042],
+            "false_positive_rate": [0.0, 0.11351339317396876]
+          }
+        },
+        "category=crypto_reference": {
+          "rows": 20,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [20, 0],
+            [0, 0]
+          ],
+          "precision": 0.0,
+          "recall": 0.0,
+          "false_positive_rate": 0.0,
+          "average_precision": null,
+          "brier_score": 0.1120844695779198,
+          "wilson_95_descriptive": {
+            "precision": null,
+            "recall": null,
+            "false_positive_rate": [0.0, 0.16112515805281938]
+          }
+        },
+        "category=institutional": {
+          "rows": 40,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [40, 0],
+            [0, 0]
+          ],
+          "precision": 0.0,
+          "recall": 0.0,
+          "false_positive_rate": 0.0,
+          "average_precision": null,
+          "brier_score": 0.0788183263636866,
+          "wilson_95_descriptive": {
+            "precision": null,
+            "recall": null,
+            "false_positive_rate": [0.0, 0.08762160119728664]
+          }
+        },
+        "category=phishing": {
+          "rows": 100,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [0, 0],
+            [38, 62]
+          ],
+          "precision": 1.0,
+          "recall": 0.62,
+          "false_positive_rate": null,
+          "average_precision": null,
+          "brier_score": 0.13528582377492201,
+          "wilson_95_descriptive": {
+            "precision": [0.9416559278986275, 0.9999999999999999],
+            "recall": [0.5220975529551107, 0.7090240074752127],
+            "false_positive_rate": null
+          }
+        },
+        "category=technology": {
+          "rows": 40,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [40, 0],
+            [0, 0]
+          ],
+          "precision": 0.0,
+          "recall": 0.0,
+          "false_positive_rate": 0.0,
+          "average_precision": null,
+          "brier_score": 0.11517567152506765,
+          "wilson_95_descriptive": {
+            "precision": null,
+            "recall": null,
+            "false_positive_rate": [0.0, 0.08762160119728664]
+          }
+        }
+      },
+      "candidate_error_cohorts": {
+        "https=0": {
+          "rows": 13,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [0, 0],
+            [0, 13]
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "false_positive_rate": null,
+          "average_precision": null,
+          "brier_score": 0.0037677533947116067,
+          "wilson_95_descriptive": {
+            "precision": [0.7719046276458016, 0.9999999999999999],
+            "recall": [0.7719046276458016, 0.9999999999999999],
+            "false_positive_rate": null
+          }
+        },
+        "https=1": {
+          "rows": 187,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [88, 12],
+            [19, 68]
+          ],
+          "precision": 0.85,
+          "recall": 0.7816091954022989,
+          "false_positive_rate": 0.12,
+          "average_precision": 0.9330863093746463,
+          "brier_score": 0.09597622202015606,
+          "wilson_95_descriptive": {
+            "precision": [0.7558677143867665, 0.9120595949383645],
+            "recall": [0.6839094276365468, 0.8554918615558452],
+            "false_positive_rate": [0.06999406437019488, 0.19812099426711421]
+          }
+        },
+        "punycode=0": {
+          "rows": 200,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [88, 12],
+            [19, 81]
+          ],
+          "precision": 0.8709677419354839,
+          "recall": 0.81,
+          "false_positive_rate": 0.12,
+          "average_precision": 0.9496442551607157,
+          "brier_score": 0.08998267155950217,
+          "wilson_95_descriptive": {
+            "precision": [0.7878821193288207, 0.9246226367979565],
+            "recall": [0.7222115462093562, 0.8748524849023126],
+            "false_positive_rate": [0.06999406437019488, 0.19812099426711421]
+          }
+        },
+        "ip_literal=0": {
+          "rows": 200,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [88, 12],
+            [19, 81]
+          ],
+          "precision": 0.8709677419354839,
+          "recall": 0.81,
+          "false_positive_rate": 0.12,
+          "average_precision": 0.9496442551607157,
+          "brier_score": 0.08998267155950217,
+          "wilson_95_descriptive": {
+            "precision": [0.7878821193288207, 0.9246226367979565],
+            "recall": [0.7222115462093562, 0.8748524849023126],
+            "false_positive_rate": [0.06999406437019488, 0.19812099426711421]
+          }
+        },
+        "content_available=0": {
+          "rows": 159,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [60, 7],
+            [18, 74]
+          ],
+          "precision": 0.9135802469135802,
+          "recall": 0.8043478260869565,
+          "false_positive_rate": 0.1044776119402985,
+          "average_precision": 0.9651349132089799,
+          "brier_score": 0.0911924463339435,
+          "wilson_95_descriptive": {
+            "precision": [0.8322008336612947, 0.9575074166600406],
+            "recall": [0.7117967165323347, 0.8725015682503303],
+            "false_positive_rate": [0.05153769768782859, 0.20031283048738022]
+          }
+        },
+        "content_available=1": {
+          "rows": 41,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [28, 5],
+            [1, 7]
+          ],
+          "precision": 0.5833333333333334,
+          "recall": 0.875,
+          "false_positive_rate": 0.15151515151515152,
+          "average_precision": 0.8611492673992674,
+          "brier_score": 0.08529110597081505,
+          "wilson_95_descriptive": {
+            "precision": [0.31951131254954973, 0.8067396863412435],
+            "recall": [0.5291118177871464, 0.9775825085499433],
+            "false_positive_rate": [0.06650457281607568, 0.3091987588044212]
+          }
+        },
+        "domain_age_known=0": {
+          "rows": 151,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [61, 9],
+            [16, 65]
+          ],
+          "precision": 0.8783783783783784,
+          "recall": 0.8024691358024691,
+          "false_positive_rate": 0.12857142857142856,
+          "average_precision": 0.9489879380828683,
+          "brier_score": 0.09972556399729728,
+          "wilson_95_descriptive": {
+            "precision": [0.7847341343323124, 0.9346768434217738],
+            "recall": [0.7029560930488834, 0.8745917318129888],
+            "false_positive_rate": [0.06914100115337508, 0.22664755949425175]
+          }
+        },
+        "domain_age_known=1": {
+          "rows": 49,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [27, 3],
+            [3, 16]
+          ],
+          "precision": 0.8421052631578947,
+          "recall": 0.8421052631578947,
+          "false_positive_rate": 0.1,
+          "average_precision": 0.9593984609708903,
+          "brier_score": 0.05995865608792946,
+          "wilson_95_descriptive": {
+            "precision": [0.6243452472967093, 0.9447952836146585],
+            "recall": [0.6243452472967093, 0.9447952836146585],
+            "false_positive_rate": [0.03459988874733419, 0.25621082579184085]
+          }
+        },
+        "category=crypto_reference": {
+          "rows": 20,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [15, 5],
+            [0, 0]
+          ],
+          "precision": 0.0,
+          "recall": 0.0,
+          "false_positive_rate": 0.25,
+          "average_precision": null,
+          "brier_score": 0.20025161513727982,
+          "wilson_95_descriptive": {
+            "precision": [0.0, 0.43448246478317476],
+            "recall": null,
+            "false_positive_rate": [0.11186170140766569, 0.468700877618744]
+          }
+        },
+        "category=institutional": {
+          "rows": 40,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [40, 0],
+            [0, 0]
+          ],
+          "precision": 0.0,
+          "recall": 0.0,
+          "false_positive_rate": 0.0,
+          "average_precision": null,
+          "brier_score": 0.0004983179176647517,
+          "wilson_95_descriptive": {
+            "precision": null,
+            "recall": null,
+            "false_positive_rate": [0.0, 0.08762160119728664]
+          }
+        },
+        "category=phishing": {
+          "rows": 100,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [0, 0],
+            [19, 81]
+          ],
+          "precision": 1.0,
+          "recall": 0.81,
+          "false_positive_rate": null,
+          "average_precision": null,
+          "brier_score": 0.10018469329487191,
+          "wilson_95_descriptive": {
+            "precision": [0.9547219145675847, 1.0],
+            "recall": [0.7222115462093562, 0.8748524849023126],
+            "false_positive_rate": null
+          }
+        },
+        "category=technology": {
+          "rows": 40,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [33, 7],
+            [0, 0]
+          ],
+          "precision": 0.0,
+          "recall": 0.0,
+          "false_positive_rate": 0.175,
+          "average_precision": null,
+          "brier_score": 0.0988274990740264,
+          "wilson_95_descriptive": {
+            "precision": [5.551115123125783e-17, 0.35433043506668743],
+            "recall": null,
+            "false_positive_rate": [0.0874541374603592, 0.31949990331787714]
+          }
+        }
+      },
+      "paired_candidate_vs_production": {
+        "group_count": 200,
+        "repetitions": 500,
+        "valid_repetitions": 500,
+        "recall_delta_95_interval": [0.10942821782178218, 0.2815849056603773],
+        "false_positive_rate_delta_95_interval": [0.06303977272727272, 0.18274658808933003],
+        "interpretation": "Paired percentile connected-domain/campaign bootstrap; conditional on fitted models and validation thresholds; excludes selection and dataset-source uncertainty."
+      }
+    },
+    "unseen historical domains": {
+      "rows": 124,
+      "positive": 91,
+      "production": {
+        "rows": 124,
+        "threshold": 0.768571778610234,
+        "confusion_matrix": [
+          [33, 0],
+          [35, 56]
+        ],
+        "precision": 1.0,
+        "recall": 0.6153846153846154,
+        "false_positive_rate": 0.0,
+        "average_precision": 0.965431614991129,
+        "brier_score": 0.12398796363138255,
+        "wilson_95_descriptive": {
+          "precision": [0.9358060632812366, 1.0],
+          "recall": [0.5126876687650975, 0.7087344841743918],
+          "false_positive_rate": [0.0, 0.10426999754245206]
+        }
+      },
+      "candidate": {
+        "rows": 124,
+        "threshold": 0.5420365515811205,
+        "confusion_matrix": [
+          [27, 6],
+          [17, 74]
+        ],
+        "precision": 0.925,
+        "recall": 0.8131868131868132,
+        "false_positive_rate": 0.18181818181818182,
+        "average_precision": 0.9718919333188017,
+        "brier_score": 0.10913430008417803,
+        "wilson_95_descriptive": {
+          "precision": [0.8458798391878072, 0.9651747507069949],
+          "recall": [0.7210405380450772, 0.879962448504965],
+          "false_positive_rate": [0.08610768208940667, 0.3438823163466992]
+        }
+      },
+      "production_error_cohorts": {
+        "https=0": {
+          "rows": 12,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [0, 0],
+            [0, 12]
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "false_positive_rate": null,
+          "average_precision": null,
+          "brier_score": 0.0067590707335904825,
+          "wilson_95_descriptive": {
+            "precision": [0.7575059933447592, 1.0],
+            "recall": [0.7575059933447592, 1.0],
+            "false_positive_rate": null
+          }
+        },
+        "https=1": {
+          "rows": 112,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [33, 0],
+            [35, 44]
+          ],
+          "precision": 1.0,
+          "recall": 0.5569620253164557,
+          "false_positive_rate": 0.0,
+          "average_precision": 0.9553373540672615,
+          "brier_score": 0.13654820215614596,
+          "wilson_95_descriptive": {
+            "precision": [0.9197043962415192, 1.0],
+            "recall": [0.44731912948308383, 0.6613221248854566],
+            "false_positive_rate": [0.0, 0.10426999754245206]
+          }
+        },
+        "punycode=0": {
+          "rows": 124,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [33, 0],
+            [35, 56]
+          ],
+          "precision": 1.0,
+          "recall": 0.6153846153846154,
+          "false_positive_rate": 0.0,
+          "average_precision": 0.965431614991129,
+          "brier_score": 0.12398796363138255,
+          "wilson_95_descriptive": {
+            "precision": [0.9358060632812366, 1.0],
+            "recall": [0.5126876687650975, 0.7087344841743918],
+            "false_positive_rate": [0.0, 0.10426999754245206]
+          }
+        },
+        "ip_literal=0": {
+          "rows": 124,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [33, 0],
+            [35, 56]
+          ],
+          "precision": 1.0,
+          "recall": 0.6153846153846154,
+          "false_positive_rate": 0.0,
+          "average_precision": 0.965431614991129,
+          "brier_score": 0.12398796363138255,
+          "wilson_95_descriptive": {
+            "precision": [0.9358060632812366, 1.0],
+            "recall": [0.5126876687650975, 0.7087344841743918],
+            "false_positive_rate": [0.0, 0.10426999754245206]
+          }
+        },
+        "content_available=0": {
+          "rows": 103,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [20, 0],
+            [30, 53]
+          ],
+          "precision": 1.0,
+          "recall": 0.6385542168674698,
+          "false_positive_rate": 0.0,
+          "average_precision": 0.9780268538070694,
+          "brier_score": 0.11716505820862338,
+          "wilson_95_descriptive": {
+            "precision": [0.932418011423458, 0.9999999999999999],
+            "recall": [0.5311967999353614, 0.7336536564289108],
+            "false_positive_rate": [0.0, 0.16112515805281938]
+          }
+        },
+        "content_available=1": {
+          "rows": 21,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [13, 0],
+            [5, 3]
+          ],
+          "precision": 1.0,
+          "recall": 0.375,
+          "false_positive_rate": 0.0,
+          "average_precision": 0.7740613553113553,
+          "brier_score": 0.15745269022872493,
+          "wilson_95_descriptive": {
+            "precision": [0.4385029682449546, 1.0],
+            "recall": [0.13684428582359742, 0.6942576053973727],
+            "false_positive_rate": [0.0, 0.22809537235419838]
+          }
+        },
+        "domain_age_known=0": {
+          "rows": 92,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [19, 0],
+            [26, 47]
+          ],
+          "precision": 1.0,
+          "recall": 0.6438356164383562,
+          "false_positive_rate": 0.0,
+          "average_precision": 0.9797828132357362,
+          "brier_score": 0.11153918407114884,
+          "wilson_95_descriptive": {
+            "precision": [0.9244423958360037, 1.0],
+            "recall": [0.5293349749798597, 0.743954995334245],
+            "false_positive_rate": [0.0, 0.16817922405261626]
+          }
+        },
+        "domain_age_known=1": {
+          "rows": 32,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [14, 0],
+            [9, 9]
+          ],
+          "precision": 1.0,
+          "recall": 0.5,
+          "false_positive_rate": 0.0,
+          "average_precision": 0.8803648264406797,
+          "brier_score": 0.1597782048670544,
+          "wilson_95_descriptive": {
+            "precision": [0.7008549515804559, 1.0],
+            "recall": [0.29031021505169974, 0.7096897849483003],
+            "false_positive_rate": [1.3877787807814457e-17, 0.2153108027376358]
+          }
+        },
+        "category=crypto_reference": {
+          "rows": 9,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [9, 0],
+            [0, 0]
+          ],
+          "precision": 0.0,
+          "recall": 0.0,
+          "false_positive_rate": 0.0,
+          "average_precision": null,
+          "brier_score": 0.10551311919313892,
+          "wilson_95_descriptive": {
+            "precision": null,
+            "recall": null,
+            "false_positive_rate": [0.0, 0.2991450484195441]
+          }
+        },
+        "category=institutional": {
+          "rows": 5,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [5, 0],
+            [0, 0]
+          ],
+          "precision": 0.0,
+          "recall": 0.0,
+          "false_positive_rate": 0.0,
+          "average_precision": null,
+          "brier_score": 0.035209899602014795,
+          "wilson_95_descriptive": {
+            "precision": null,
+            "recall": null,
+            "false_positive_rate": [0.0, 0.43448246478317476]
+          }
+        },
+        "category=phishing": {
+          "rows": 91,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [0, 0],
+            [35, 56]
+          ],
+          "precision": 1.0,
+          "recall": 0.6153846153846154,
+          "false_positive_rate": null,
+          "average_precision": null,
+          "brier_score": 0.1335945010389099,
+          "wilson_95_descriptive": {
+            "precision": [0.9358060632812366, 1.0],
+            "recall": [0.5126876687650975, 0.7087344841743918],
+            "false_positive_rate": null
+          }
+        },
+        "category=technology": {
+          "rows": 19,
+          "threshold": 0.768571778610234,
+          "confusion_matrix": [
+            [19, 0],
+            [0, 0]
+          ],
+          "precision": 0.0,
+          "recall": 0.0,
+          "false_positive_rate": 0.0,
+          "average_precision": null,
+          "brier_score": 0.11009159605275312,
+          "wilson_95_descriptive": {
+            "precision": null,
+            "recall": null,
+            "false_positive_rate": [0.0, 0.16817922405261626]
+          }
+        }
+      },
+      "candidate_error_cohorts": {
+        "https=0": {
+          "rows": 12,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [0, 0],
+            [0, 12]
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "false_positive_rate": null,
+          "average_precision": null,
+          "brier_score": 0.0040817261899393,
+          "wilson_95_descriptive": {
+            "precision": [0.7575059933447592, 1.0],
+            "recall": [0.7575059933447592, 1.0],
+            "false_positive_rate": null
+          }
+        },
+        "https=1": {
+          "rows": 112,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [27, 6],
+            [17, 62]
+          ],
+          "precision": 0.9117647058823529,
+          "recall": 0.7848101265822784,
+          "false_positive_rate": 0.18181818181818182,
+          "average_precision": 0.9627359236885332,
+          "brier_score": 0.12038993300141788,
+          "wilson_95_descriptive": {
+            "precision": [0.8205623087685489, 0.9589318846855107],
+            "recall": [0.682128319163289, 0.8610779526794132],
+            "false_positive_rate": [0.08610768208940667, 0.3438823163466992]
+          }
+        },
+        "punycode=0": {
+          "rows": 124,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [27, 6],
+            [17, 74]
+          ],
+          "precision": 0.925,
+          "recall": 0.8131868131868132,
+          "false_positive_rate": 0.18181818181818182,
+          "average_precision": 0.9718919333188017,
+          "brier_score": 0.10913430008417803,
+          "wilson_95_descriptive": {
+            "precision": [0.8458798391878072, 0.9651747507069949],
+            "recall": [0.7210405380450772, 0.879962448504965],
+            "false_positive_rate": [0.08610768208940667, 0.3438823163466992]
+          }
+        },
+        "ip_literal=0": {
+          "rows": 124,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [27, 6],
+            [17, 74]
+          ],
+          "precision": 0.925,
+          "recall": 0.8131868131868132,
+          "false_positive_rate": 0.18181818181818182,
+          "average_precision": 0.9718919333188017,
+          "brier_score": 0.10913430008417803,
+          "wilson_95_descriptive": {
+            "precision": [0.8458798391878072, 0.9651747507069949],
+            "recall": [0.7210405380450772, 0.879962448504965],
+            "false_positive_rate": [0.08610768208940667, 0.3438823163466992]
+          }
+        },
+        "content_available=0": {
+          "rows": 103,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [16, 4],
+            [16, 67]
+          ],
+          "precision": 0.9436619718309859,
+          "recall": 0.8072289156626506,
+          "false_positive_rate": 0.2,
+          "average_precision": 0.9759444257729539,
+          "brier_score": 0.11488897359973907,
+          "wilson_95_descriptive": {
+            "precision": [0.8639039420002305, 0.9778754806983033],
+            "recall": [0.7095661283535466, 0.8777109705411443],
+            "false_positive_rate": [0.08065766257979806, 0.41601743225189364]
+          }
+        },
+        "content_available=1": {
+          "rows": 21,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [11, 2],
+            [1, 7]
+          ],
+          "precision": 0.7777777777777778,
+          "recall": 0.875,
+          "false_positive_rate": 0.15384615384615385,
+          "average_precision": 0.9472222222222222,
+          "brier_score": 0.08090899665071191,
+          "wilson_95_descriptive": {
+            "precision": [0.45258896910698887, 0.9367748928821533],
+            "recall": [0.5291118177871464, 0.9775825085499433],
+            "false_positive_rate": [0.043258178358081184, 0.4223463101948254]
+          }
+        },
+        "domain_age_known=0": {
+          "rows": 92,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [14, 5],
+            [14, 59]
+          ],
+          "precision": 0.921875,
+          "recall": 0.8082191780821918,
+          "false_positive_rate": 0.2631578947368421,
+          "average_precision": 0.9713651334093676,
+          "brier_score": 0.12418109922444258,
+          "wilson_95_descriptive": {
+            "precision": [0.8298046264583709, 0.9661688230914496],
+            "recall": [0.7034449738686679, 0.8821763910901279],
+            "false_positive_rate": [0.11806412346782508, 0.487915508978151]
+          }
+        },
+        "domain_age_known=1": {
+          "rows": 32,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [13, 1],
+            [3, 15]
+          ],
+          "precision": 0.9375,
+          "recall": 0.8333333333333334,
+          "false_positive_rate": 0.07142857142857142,
+          "average_precision": 0.9835457038565913,
+          "brier_score": 0.06587475255591749,
+          "wilson_95_descriptive": {
+            "precision": [0.7167126242970107, 0.9888806552353576],
+            "recall": [0.6077796189608428, 0.9416342319413856],
+            "false_positive_rate": [0.012722215247890939, 0.31468704424151117]
+          }
+        },
+        "category=crypto_reference": {
+          "rows": 9,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [7, 2],
+            [0, 0]
+          ],
+          "precision": 0.0,
+          "recall": 0.0,
+          "false_positive_rate": 0.2222222222222222,
+          "average_precision": null,
+          "brier_score": 0.19768831807703335,
+          "wilson_95_descriptive": {
+            "precision": [0.0, 0.6576197724933469],
+            "recall": null,
+            "false_positive_rate": [0.06322510711784671, 0.5474110308930111]
+          }
+        },
+        "category=institutional": {
+          "rows": 5,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [5, 0],
+            [0, 0]
+          ],
+          "precision": 0.0,
+          "recall": 0.0,
+          "false_positive_rate": 0.0,
+          "average_precision": null,
+          "brier_score": 0.001200493952850889,
+          "wilson_95_descriptive": {
+            "precision": null,
+            "recall": null,
+            "false_positive_rate": [0.0, 0.43448246478317476]
+          }
+        },
+        "category=phishing": {
+          "rows": 91,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [0, 0],
+            [17, 74]
+          ],
+          "precision": 1.0,
+          "recall": 0.8131868131868132,
+          "false_positive_rate": null,
+          "average_precision": null,
+          "brier_score": 0.10226576070895536,
+          "wilson_95_descriptive": {
+            "precision": [0.950650220603614, 1.0],
+            "recall": [0.7210405380450772, 0.879962448504965],
+            "false_positive_rate": null
+          }
+        },
+        "category=technology": {
+          "rows": 19,
+          "threshold": 0.5420365515811205,
+          "confusion_matrix": [
+            [15, 4],
+            [0, 0]
+          ],
+          "precision": 0.0,
+          "recall": 0.0,
+          "false_positive_rate": 0.21052631578947367,
+          "average_precision": null,
+          "brier_score": 0.12848798176134646,
+          "wilson_95_descriptive": {
+            "precision": [0.0, 0.4898908364545973],
+            "recall": null,
+            "false_positive_rate": [0.08507676632916253, 0.43334278443814167]
+          }
+        }
+      },
+      "paired_candidate_vs_production": {
+        "group_count": 124,
+        "repetitions": 500,
+        "valid_repetitions": 500,
+        "recall_delta_95_interval": [0.1111111111111111, 0.29783061765820384],
+        "false_positive_rate_delta_95_interval": [0.06896551724137931, 0.33731060606060587],
+        "interpretation": "Paired percentile connected-domain/campaign bootstrap; conditional on fitted models and validation thresholds; excludes selection and dataset-source uncertainty."
+      }
+    }
+  }
+}

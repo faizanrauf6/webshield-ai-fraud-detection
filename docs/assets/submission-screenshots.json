@@ -1,0 +1,130 @@
+{
+  "capturedAt": "2026-10-11T21:25:08.782Z",
+  "base": "http://127.0.0.1:3000",
+  "pages": [
+    {
+      "name": "dashboard-desktop-light",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "name": "dashboard-mobile-light",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "name": "dashboard-desktop-dark",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "name": "dashboard-mobile-dark",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "name": "report-benign-mobile-light",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "name": "report-synthetic-mobile-light",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "name": "report-benign-overview-light",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "name": "report-synthetic-overview-light",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "name": "report-benign-mobile-dark",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "name": "report-synthetic-mobile-dark",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "name": "report-benign-overview-dark",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "name": "report-synthetic-overview-dark",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "name": "dashboard-mobile-overview-light",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "name": "dashboard-mobile-overview-dark",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "overflow": false
+    }
+  ],
+  "benignId": "8349675b-e850-4a7c-8742-59e9cf79daab",
+  "synthetic": {
+    "status": 202,
+    "body": {
+      "scan_id": "3e28f783-b76a-453d-ae4a-19baccc0205e",
+      "status": "queued",
+      "submitted_url": "https://investment-demo.example/"
+    }
+  },
+  "scope": "Actual local application; saved benign example.com and repository-owned synthetic investment report. No attacker website opened in normal browser.",
+  "report_images": [
+    "report-benign-light.png",
+    "report-benign-dark.png",
+    "report-synthetic-light.png",
+    "report-synthetic-dark.png",
+    "report-benign-mobile-light.png",
+    "report-synthetic-mobile-light.png",
+    "report-benign-overview-light.png",
+    "report-synthetic-overview-light.png",
+    "report-benign-mobile-dark.png",
+    "report-synthetic-mobile-dark.png",
+    "report-benign-overview-dark.png",
+    "report-synthetic-overview-dark.png"
+  ],
+  "additionalCapturedAt": "2026-10-11T21:33:12.875Z",
+  "mobileExcerptCapturedAt": "2026-10-11T21:39:47.570Z"
+}

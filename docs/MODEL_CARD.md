@@ -22,6 +22,16 @@ Historical source distributions, class prevalence and calibration can differ fro
 
 The separate ScamFerret research compares URL/domain/content signals for published store/investment/crypto labels. Those artifacts are research-only, are not installed as phishing models, and lack aligned historical threat-provider observations.
 
+## Additional frozen research candidates
+
+The [quality study](evidence/model-quality-study.json) adds prespecified character TF-IDF plus numeric lexical logistic candidates on the exact same PhreshPhish partitions. Validation selects C=1 before holdout scoring. The reused 36,910-record holdout measures precision 97.53%, recall 83.53%, FPR 1.82%; paired connected-domain bootstrap recall gain is +25.12 percentage points (95% interval +23.58 to +26.86). Its binomial FPR interval is 1.64–2.01%, crossing the intended 2% target, and legitimate HTTP FPR is 49.18% (60/122). A large train/validation gap and source drift remain. This is descriptive reuse of an already inspected holdout, not new independent confirmation or production approval.
+
+Archived missingness-aware shallow-forest research reduces descriptive FPR from 8.47% to 4.24% while reducing recall from 90.63% to 77.08%. Legitimate cryptocurrency FPR is still 8.11% (3/37). Capacity and missingness handling change together, so the outcome cannot be attributed causally to either alone. Neither candidate is promoted; the installed bundle and threshold above remain unchanged.
+
+Candidates use uncalibrated scores and a different input/artifact representation; Brier scores cannot be presented as a fair calibration improvement over the calibrated baseline. All global and sensitivity operating points are persisted from validation before scoring, and none may be selected afterward from test results. The [prospective reproduction protocol](RESEARCH_REPRODUCTION.md) keeps new-cohort model parameters frozen and reports population/label limitations explicitly.
+
+The [new-source frozen-model comparison](evidence/external-model-validation.json) provides a concrete reason to reject promotion: on 100 PhishTank positives and 100 official references, character-candidate recall is 81% versus installed-model 62%, but its FPR rises to 12% (12/100) versus 0/100. After excluding all 76 rows sharing historical sample domains, the candidate still falsely flags 6/33 references (18.18%). The pilot's identity labels, root-page sampling and small denominators limit generalization; 0/100 installed-model false positives is compatible with a binomial upper 95% bound of 3.70%, not a zero operational FPR.
+
 ## Artifact trust
 
 Promotion requires real documented data, validation selection, matching frozen holdout evaluation and development regressions. Checksummed filenames are published before atomic manifest replacement. Inference checks schema, class order and probability bounds before trusted-local joblib loading. Joblib can execute code; hashes detect alteration but cannot authenticate simultaneous hostile replacement of model and manifest. Load only owner-controlled artifacts. Python inference is bounded to 30 seconds; missing or timed-out inference stays unavailable.

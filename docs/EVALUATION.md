@@ -32,6 +32,35 @@ No source website was visited. Dates are unknown; publication upper bounds are n
 
 The source does not provide independent timestamped historical threat-provider snapshots. Full threat-enriched hybrid and reputation-only historical comparisons therefore remain unavailable. Replaying today's providers against old labels would not supply that missing evidence. No improvement is assumed; report the measured results even when extra features reduce performance. Archived scam artifacts remain research-only and are not promoted into the phishing runtime.
 
+## Frozen quality study and new-source confirmation
+
+The [prespecified quality study](evidence/model-quality-study.json) compares richer character/lexical and missingness-aware candidates on exactly reconstructed historical partitions. All candidate and sensitivity thresholds are durably selected on validation before holdout scoring. Historical holdouts had previously been examined, so this is descriptive reuse. The character/lexical candidate measures 97.53% precision, 83.53% recall and 1.82% FPR on 36,910 records; its paired connected-domain bootstrap recall gain is +25.12 percentage points (95% interval +23.58 to +26.86). Legitimate HTTP FPR remains 49.18% (60/122), and its global FPR interval crosses 2%. Archived shallow-forest FPR falls to 4.24% but recall falls to 77.08%; legitimate cryptocurrency FPR remains 8.11% (3/37). These tradeoffs do not justify promotion.
+
+The [new-source comparison](evidence/external-model-validation.json) then applies the fixed installed and character models, without fitting/recalibration, to the 200-site prospective cohort below. Installed recall is 62% with 0/100 reference false positives; character recall is 81% with 12/100 false positives. Excluding all domains present anywhere in the historical PhreshPhish sample leaves 124 rows (91 positives, 33 references): installed recall 61.54% and FPR 0/33; character recall 81.32% and FPR 6/33 (18.18%). The candidate's historical gain does not transfer at the intended low-FPR operating point, so it remains research-only. Zero observed false positives has considerable uncertainty: the installed all-reference FPR upper descriptive binomial 95% bound is 3.70%.
+
+## Prospective aligned hybrid and provider pilot
+
+The [aligned experiment](evidence/aligned-evaluation.json) uses 100 recent PhishTank community-verified/online positive labels and all 100 prespecified official references. Labels are not produced by Google/OpenPhish feature outputs, although unknown shared upstream reports can limit independence. Actual static HTML, DNS/RDAP and provider observations were acquired over seven minutes, with every failed observation retained. Only 64 domain and 41 content requests completed. Host DNS failures were observed near completion; specific worker failure causes were not retained. The dataset/source/candidate hashes and missingness are recorded.
+
+One source-clock preprocessing amendment was made after acquisition integrity checks and before scoring: raw JSONL and source timestamps remain unchanged, derived assessment time is a bounded source-clock watermark, and chronology uses original host completion. Eighteen content timestamps were ahead by at most 27.576 ms. Skew over one second rejects the entire cohort; provider TTL is never extended. Raw/derived hashes and affected counts are public evidence metadata.
+
+Each of four cumulative feature stages fits the same three prespecified calibrated baseline algorithms on identical 120/40/40 partitions. Every model/threshold choice for both protocols is locked before any holdout prediction. The primary group holdout contains 22 references and 18 positives:
+
+| Features                              | Validation-selected model | Holdout precision | Recall | Reference FPR |
+| ------------------------------------- | ------------------------- | ----------------- | ------ | ------------- |
+| URL                                   | Random forest             | 94.74%            | 100%   | 4.55% (1/22)  |
+| URL + domain                          | Random forest             | 94.74%            | 100%   | 4.55% (1/22)  |
+| URL + domain + content                | Random forest             | 94.74%            | 100%   | 4.55% (1/22)  |
+| Full hybrid, including threat reports | Random forest             | 94.74%            | 100%   | 4.55% (1/22)  |
+
+All four selected stages make identical predictions; no incremental hybrid benefit is established, and the 2% validation budget fails to transfer. Only 9/40 domain and 6/40 content observations are available in this holdout. With such small validation denominators, the budget forces zero empirical false positives rather than proving a 2% population rate.
+
+The separate single-session chronological sensitivity holdout has 17 references and 23 positives. Lexical recall/FPR is 86.96%/5.88%; domain 82.61%/0%; content 86.96%/0%; full hybrid 78.26%/0%. Adding threat features reduces recall in this measured sensitivity comparison. Its holdout has no completed domain/content observations; this short within-session ordering cannot establish long-term temporal robustness. No later threshold or model is chosen from these test outcomes.
+
+Provider-only baselines use the same cohort and preserve unavailable checks as abstentions. Across all 200 rows, Google completes 198 checks and detects 27/100 positives; OpenPhish completes 200 and detects 1/100; either provider detects 28/100. None reports a reference positive. The primary group-holdout provider recalls are 1/18, 1/18 and 2/18 respectively. The JSON also reports covered-only and all-row no-alert summaries; an unavailable/no-alert observation is not a safety finding.
+
+This is a convenience pilot with conspicuous source shortcuts: famous HTTPS homepages are negatives while arbitrary feed paths are positives. URL/path length, age, popularity, acquisition source and missingness can dominate. Official identity is not a current compromise audit, community labels are not independent current-page adjudication, and historical-domain exclusion leaves only 33 external references. Neither aggregate scores nor this pilot establish broad business-fraud accuracy. Historical threat snapshots remain missing from the archived corpora; the prospective study is a new contemporary experiment. Reproduce with the [documented protocol](RESEARCH_REPRODUCTION.md), preserving the original caches before collecting a new time-varying cohort.
+
 ## Legacy phishing comparison
 
 The earlier undated PhiUSIIL group holdout measured 95.31% phishing F1 and 2.10% false positives. Its all-www legitimate collection convention and path distribution produced severe false positives on normal inputs. The old production model was replaced. Legacy [metrics](evidence/benchmark-evaluation.json) are retained for reproducibility and diagnosis, not combined with the newer results as though the test populations were interchangeable.

@@ -34,6 +34,14 @@ Hybrid JSONL adds `observations` with historical `domain`, `content`, `providers
 
 Collect separate reviewed deceptive-store and investment cohorts before making broader claims. Preserve uncertainty and reviewer disagreement. Include hard negatives such as legitimate login pages, international domains, new stores and lawful cryptocurrency services. Never visit suspicious URLs outside the isolated collection boundary.
 
+## Prospective aligned phishing/reference pilot
+
+[PhishTank's public developer database](https://phishtank.org/developer_info.php) supplies community-verified positive labels independently of the Google/OpenPhish feature outputs. One bounded public snapshot was retrieved at 2026-10-11 21:23:10 UTC and hashed; 100 verified/online URLs within its preceding seven days were selected by a label-independent URL hash with one registrable domain each. No assumed open-data license or independent local adjudication is asserted. Raw lists are not redistributed in Git. All 100 prespecified official references are retained, split across institutional, technology and cryptocurrency identity categories.
+
+Real isolated domain/static-content and current Google/OpenPhish observations were acquired from 21:29:14 to 21:36:29 UTC on 11 October 2026 (12 October locally). All 200 rows remain, including failed requests: 64 domain and 41 content observations completed. Raw JSONL stays immutable and private. A pre-scoring clock-watermark amendment accounts for 18 source timestamps ahead of host completion by at most 27.576 ms; original acquisition/source dates remain unchanged, chronological partitions use host completion, and skew exceeding one second rejects the entire run.
+
+The reference class establishes official-domain identity, not absence of compromise or a financial audit. Negatives are famous HTTPS root pages while positives retain arbitrary feed paths; URL/length, age, popularity, missingness and source conventions can dominate. Public feeds can share reports despite direct label/feature separation. No broad store/investment or long-term temporal claim follows from this seven-minute convenience pilot. [Aligned evidence](evidence/aligned-evaluation.json) records source/candidate hashes, label basis, observation coverage, clock processing and identical group/chronological partitions; [reproduction](RESEARCH_REPRODUCTION.md) explains immutable caches and time-varying web state.
+
 ## Synthetic fixtures
 
 The 240-row generator validates training/calibration/evaluation tooling only. Synthetic experiments are marked in their manifests, excluded from production promotion and never represented as measured real-world accuracy.
