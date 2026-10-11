@@ -1,0 +1,17 @@
+{
+  "domain": ["domain_available", "domain_age_known", "domain_age_days", "dns_address_count"],
+  "content": [
+    "content_available",
+    "password_forms",
+    "external_password_forms",
+    "http_password_forms",
+    "redirect_count",
+    "cross_domain_redirects",
+    "iframe_count",
+    "link_domain_count",
+    "crypto_present",
+    "investment_claims",
+    "crypto_addresses"
+  ],
+  "threat": ["threat_available", "completed_providers", "reported_threats"]
+}

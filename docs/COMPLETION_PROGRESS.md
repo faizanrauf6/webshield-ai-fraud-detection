@@ -1,0 +1,14 @@
+# Completion progress
+
+Plan: `docs/superpowers/plans/2026-10-12-completion.md`.
+
+User authorized all pending implementation sequentially and selected a public phishing benchmark. Working inline in the supplied directory; Git is absent. The proposal PDF remains the scope baseline.
+
+Pre-flight: model metadata/types join tasks 1, 2, and 5; production feature schema joins tasks 1 and 3; screening fallback joins tasks 1 and 4. Preserve optional compatibility for historical reports. Real benchmark has no per-record dates, so group-disjoint evaluation must be labeled separately from temporal evaluation.
+
+- Task 1: complete. JavaScript 70 passed / 8 integration skipped; Python 14 passed. Added bounded Python inference, artifact/schema checks, synthetic rejection, model aggregation and serialized estimates. Model installation awaits task 2.
+- Task 2: complete. Imported 234,661 real benchmark records; selected Histogram Gradient Boosting on validation data and evaluated 45,589 untouched domain-group holdout records. Selected threshold 0.31349; holdout phishing precision 0.96792, recall 0.93871, F1 0.95309, false-positive rate 0.02103. Promoted the checksum-validated bundle; evaluation is historical phishing-only and non-temporal.
+- Task 3: complete as tooling. Four cumulative feature schemas and shared observation extraction added, with missing-data masks, historical-snapshot validation and ablation runner. JavaScript 72 passed; Python 23 passed; four-stage synthetic smoke completed. Real hybrid performance still requires historical snapshots unavailable in the selected benchmark.
+- Task 4: complete. Added accurate content summaries, HTTP-password/investment/redirect/storefront indicators, base href and associated-form extraction, per-provider persistence/export and independent expiry fallback. Scanner 8 passed; expanded JavaScript suite verified separately.
+- Task 5: complete. Model estimates, actual baseline metrics/protocol/provenance and provider freshness are displayed. Python runtime and provider/model flags are wired through Docker/Compose. Lint/types/build passed; all 14 desktop/mobile browser tests passed. Local private `.env` enables the installed bundle.
+- Task 6: implementation and available verification complete. Final isolated JavaScript suite: 85 passed including all 8 PostgreSQL/Redis integration cases; Python ML: 26 passed; scanner: 9 passed; four-stage synthetic ablation smoke passed. Real model submission/persistence/export/resubmission and live OpenPhish negative lookup passed. Documentation/cards/evidence updated. Independent review found three edge cases; red/green fixes and re-review completed. Docker engine absent and Google key unavailable, so container/live collection/Google acceptance remains pending; broader/temporal/hybrid research requires additional reviewed data. See `docs/evidence/verification.md`.

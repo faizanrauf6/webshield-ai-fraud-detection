@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>WebShield AI FYP Proposal</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 17.8mm 19mm;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        color: #1e293b;
+        font:
+          10.5pt/1.25 Calibri,
+          Arial,
+          sans-serif;
+      }
+      .page {
+        break-after: page;
+      }
+      .page:last-child {
+        break-after: auto;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #17365d;
+        break-after: avoid;
+      }
+      h2 {
+        font-size: 16pt;
+        margin: 0 0 9pt;
+        padding-top: 5pt;
+      }
+      h3 {
+        font-size: 12pt;
+        margin: 10pt 0 6pt;
+      }
+      p {
+        margin: 0 0 7pt;
+      }
+      ul {
+        margin: 5pt 0 10pt;
+        padding-left: 18pt;
+      }
+      li {
+        margin-bottom: 6pt;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 8pt 0 12pt;
+        font-size: 9.3pt;
+        line-height: 1.17;
+        table-layout: fixed;
+      }
+      th,
+      td {
+        border: 1px solid #bac7d5;
+        padding: 7pt 6pt;
+        vertical-align: top;
+        overflow-wrap: anywhere;
+      }
+      th {
+        background: #17365d;
+        color: white;
+        text-align: left;
+      }
+      tr:nth-child(odd) td {
+        background: #f1f5f9;
+      }
+      tr {
+        break-inside: avoid;
+      }
+      thead {
+        display: table-header-group;
+      }
+      .cover-title {
+        text-align: center;
+        padding: 55pt 0 35pt;
+      }
+      .cover-title h1 {
+        font-size: 30pt;
+        margin: 15pt 0;
+      }
+      .eyebrow {
+        font-size: 13pt;
+        font-weight: bold;
+        letter-spacing: 1pt;
+      }
+      .subtitle {
+        font-size: 20pt;
+        color: #17365d;
+        line-height: 1.3;
+      }
+      .center {
+        text-align: center;
+      }
+      .muted {
+        color: #64748b;
+        font-style: italic;
+        margin-top: 24pt;
+      }
+      @media screen {
+        body {
+          background: #e2e8f0;
+        }
+        .page {
+          background: white;
+          width: 210mm;
+          min-height: 297mm;
+          margin: 20px auto;
+          padding: 17.8mm 19mm;
+          box-shadow: 0 3px 15px #0002;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page">
+      <div class="cover-title">
+        <p class="eyebrow">FINAL YEAR PROJECT PROPOSAL</p>
+        <h1>WebShield AI</h1>
+        <p class="subtitle">AI-Powered Website Fraud Detection<br />and Trust Analysis System</p>
+      </div>
+      <table>
+        <colgroup>
+          <col style="width: 29.63%" />
+          <col style="width: 70.37%" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Submission details</th>
+            <th>Information</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Submitted by</td>
+            <td>[Student name / team member names]</td>
+          </tr>
+          <tr>
+            <td>Registration / roll number</td>
+            <td>[Registration / roll number(s)]</td>
+          </tr>
+          <tr>
+            <td>Degree programme</td>
+            <td>[Degree programme]</td>
+          </tr>
+          <tr>
+            <td>Department</td>
+            <td>[Department name]</td>
+          </tr>
+          <tr>
+            <td>University / institution</td>
+            <td>[University / institution name]</td>
+          </tr>
+          <tr>
+            <td>Supervisor</td>
+            <td>[Supervisor name]</td>
+          </tr>
+          <tr>
+            <td>Academic session</td>
+            <td>[Academic session]</td>
+          </tr>
+          <tr>
+            <td>Submission date</td>
+            <td>[Submission date]</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="center muted">
+        An intelligent system for fraudulent website detection and explainable risk assessment
+      </p>
+    </section>
+    <section class="page">
+      <h2>1. Title of Project</h2>
+      <p>
+        <strong>WebShield AI: AI-Powered Website Fraud Detection and Trust Analysis System</strong>
+      </p>
+      <h3>Problem Statement</h3>
+      <p>
+        Users encounter suspicious links through messages, advertisements, online stores and
+        investment promotions. A website can use HTTPS, professional branding or cryptocurrency
+        terminology without establishing that its operator is trustworthy. URL patterns, reported
+        threats and page indicators also have limitations when considered individually. Users need
+        an understandable assessment that shows the available evidence and identifies uncertainty.
+      </p>
+      <p>
+        WebShield AI will be an AI-powered web application designed to detect fraudulent websites,
+        including phishing pages, deceptive online stores and suspicious investment or
+        cryptocurrency websites. It will combine machine-learning predictions with URL
+        characteristics, domain information, website content and threat-intelligence reports. Users
+        will receive a risk assessment with the evidence behind each finding, helping them make
+        informed decisions before entering credentials or making payments.
+      </p>
+      <h2>2. Objectives</h2>
+      <ul>
+        <li>
+          O1. Develop a web application that accepts website URLs, processes scans asynchronously
+          and stores scan results and supporting evidence.
+        </li>
+        <li>
+          O2. Detect indicators of phishing, deceptive storefronts and investment fraud by analyzing
+          URL structure, domain information, page content, threat reports and cryptocurrency-related
+          signals.
+        </li>
+        <li>
+          O3. Train and compare Logistic Regression, Random Forest and Histogram Gradient Boosting,
+          evaluate them on unseen labeled data, and integrate the selected model into the detection
+          workflow.
+        </li>
+        <li>
+          O4. Present understandable website-risk categories, model estimates, explanations, scan
+          history and downloadable reports through an accessible dashboard.
+        </li>
+        <li>
+          O5. Evaluate detection quality, false positives, system reliability and security through
+          reproducible experiments, software testing and documented results.
+        </li>
+      </ul>
+      <h2>3. Scope of the Project</h2>
+      <p>
+        The project will cover end-to-end analysis of public HTTP(S) websites: URL validation, DNS
+        and RDAP metadata, bounded website-content collection, threat-intelligence lookup, ML-based
+        classification and explainable risk reporting. Content analysis will examine page text,
+        credential forms, destination domains and suspicious investment claims. Cryptocurrency
+        analysis will identify relevant language and validate candidate wallet or contract
+        addresses. Background processing, scan history, retries, JSON export and provider-status
+        information will complete the user workflow.
+      </p>
+      <p>
+        Website content will be collected through a separate worker with restricted network access
+        and resource limits. The initial FYP deployment will support a controlled demonstration
+        environment. Wallet transactions, seed-phrase collection, authentication or CAPTCHA bypass,
+        automated takedown and full on-chain tracing are excluded. Screenshot-based brand comparison
+        and a browser extension may be considered as future enhancements.
+      </p>
+    </section>
+    <section class="page">
+      <h2>4. Core Functional Requirements</h2>
+      <p>
+        The following ten core functional requirements describe the intended behavior of the
+        completed project.
+      </p>
+      <table>
+        <colgroup>
+          <col style="width: 8.89%" />
+          <col style="width: 21.48%" />
+          <col style="width: 69.63%" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>FR No.</th>
+            <th>Functional requirement</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>FR-01</td>
+            <td>URL submission and validation</td>
+            <td>
+              The system shall accept a public HTTP(S) URL and reject malformed inputs, credentials,
+              disallowed ports, internal hostnames and nonpublic or ambiguous IP addresses with a
+              readable error.
+            </td>
+          </tr>
+          <tr>
+            <td>FR-02</td>
+            <td>Asynchronous scan processing</td>
+            <td>
+              The system shall persist each accepted scan with a unique identifier, process it
+              through a background queue, and expose queued, running, completed, partial or failed
+              status with timestamps.
+            </td>
+          </tr>
+          <tr>
+            <td>FR-03</td>
+            <td>URL and domain analysis</td>
+            <td>
+              The system shall extract URL features, resolve public domain records and retrieve
+              available RDAP metadata, including domain creation age, while recording missing
+              information explicitly.
+            </td>
+          </tr>
+          <tr>
+            <td>FR-04</td>
+            <td>AI-based fraud detection</td>
+            <td>
+              The system shall use a trained and evaluated ML model to classify website risk and
+              provide a model estimate using versioned features and thresholds selected on
+              validation data.
+            </td>
+          </tr>
+          <tr>
+            <td>FR-05</td>
+            <td>Threat-intelligence lookup</td>
+            <td>
+              The system shall check submitted URLs against a configured threat-intelligence
+              provider and record reported threats, source, lookup time, report expiry and provider
+              availability.
+            </td>
+          </tr>
+          <tr>
+            <td>FR-06</td>
+            <td>Website-content analysis</td>
+            <td>
+              The system shall collect bounded page content through an isolated worker and analyze
+              text, login forms, form-action domains and redirect patterns for potential phishing or
+              deceptive behavior.
+            </td>
+          </tr>
+          <tr>
+            <td>FR-07</td>
+            <td>Cryptocurrency scam indicators</td>
+            <td>
+              The system shall detect crypto-related content, suspicious investment claims and
+              validated address candidates, and explain how these indicators contribute to the
+              assessment.
+            </td>
+          </tr>
+          <tr>
+            <td>FR-08</td>
+            <td>Risk assessment and explanation</td>
+            <td>
+              The system shall combine model estimates and supporting evidence into an explained
+              risk category, displaying sources and timestamps and returning inconclusive when
+              evidence is insufficient.
+            </td>
+          </tr>
+          <tr>
+            <td>FR-09</td>
+            <td>History and export</td>
+            <td>
+              The system shall provide paginated scan history, access to stored reports, scan
+              resubmission and downloadable JSON evidence reports.
+            </td>
+          </tr>
+          <tr>
+            <td>FR-10</td>
+            <td>Safety and configuration</td>
+            <td>
+              The system shall enforce request limits and safe output handling, keep provider
+              credentials on the backend, and display provider availability and privacy information
+              without exposing secrets.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="page">
+      <h2>5. Tools Used in the Project</h2>
+      <p>
+        The project will use the following technologies for application development, model training,
+        inference, testing and deployment.
+      </p>
+      <table>
+        <colgroup>
+          <col style="width: 17.04%" />
+          <col style="width: 34.81%" />
+          <col style="width: 48.15%" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Technology</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Languages</td>
+            <td>TypeScript, JavaScript, Python</td>
+            <td>Application logic, shared features, ML training and inference.</td>
+          </tr>
+          <tr>
+            <td>Frontend</td>
+            <td>Next.js 16 App Router, React 19, CSS</td>
+            <td>Responsive dashboard, scan reports, history and settings.</td>
+          </tr>
+          <tr>
+            <td>Backend</td>
+            <td>Node.js, NestJS 11</td>
+            <td>REST API, scan orchestration and integration with ML inference.</td>
+          </tr>
+          <tr>
+            <td>Database</td>
+            <td>PostgreSQL 16, TypeORM</td>
+            <td>Persisted scans, JSONB evidence and versioned migrations.</td>
+          </tr>
+          <tr>
+            <td>Background queue</td>
+            <td>Redis 7, BullMQ</td>
+            <td>Persistent jobs, bounded retries and worker processing.</td>
+          </tr>
+          <tr>
+            <td>Machine learning</td>
+            <td>scikit-learn, pandas, joblib</td>
+            <td>Three baselines, calibration, evaluation and versioned inference.</td>
+          </tr>
+          <tr>
+            <td>Threat intelligence</td>
+            <td>Google Safe Browsing adapter</td>
+            <td>Reported-threat lookup through a configured backend integration.</td>
+          </tr>
+          <tr>
+            <td>Testing and quality</td>
+            <td>Vitest, Supertest, Playwright, axe-core, Python unittest, ESLint, Prettier</td>
+            <td>Unit, API, browser, accessibility and ML pipeline checks.</td>
+          </tr>
+          <tr>
+            <td>Deployment and CI</td>
+            <td>Docker Compose, GitHub Actions</td>
+            <td>Local services and automated verification workflow.</td>
+          </tr>
+          <tr>
+            <td>Development and documentation</td>
+            <td>npm workspaces, Git, Makefile, Mermaid, Word-compatible documents</td>
+            <td>Project tasks, version control, diagrams and academic deliverables.</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>6. Techniques Used in the Project</h2>
+      <ul>
+        <li>
+          Requirement engineering and modular design: align objectives, acceptance criteria, typed
+          API contracts and component boundaries.
+        </li>
+        <li>
+          Database design and asynchronous processing: store scan records with indexed history and
+          provenance, and use persistent jobs for background work.
+        </li>
+        <li>
+          Feature engineering and data preparation: normalize URLs, derive lexical/domain/content
+          features, validate labels and remove conflicting or duplicate records.
+        </li>
+        <li>
+          Leakage-resistant ML evaluation: separate connected domains/campaigns across temporal
+          partitions, calibrate on validation data and reserve the final test set.
+        </li>
+        <li>
+          Hybrid detection and secure processing: combine model predictions with domain, content and
+          threat evidence while isolating website-content collection.
+        </li>
+        <li>
+          Software verification and accessibility: test functional behavior, failure paths, unsafe
+          inputs, responsive layouts and keyboard or screen-reader access.
+        </li>
+      </ul>
+    </section>
+    <section class="page">
+      <h2>7. Methodology Pipeline</h2>
+      <p>
+        Problem identification → literature review → requirements analysis → architecture and
+        database design → dataset acquisition and labeling → preprocessing and feature extraction →
+        application and model development → testing and evaluation → local deployment and
+        documentation.
+      </p>
+      <table>
+        <colgroup>
+          <col style="width: 12.15%" />
+          <col style="width: 19.26%" />
+          <col style="width: 42.96%" />
+          <col style="width: 25.63%" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Input</th>
+            <th>Main activity</th>
+            <th>Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. Requirements</td>
+            <td>Problem and user needs</td>
+            <td>Review related approaches; define scope, risks and measurable requirements.</td>
+            <td>Proposal and SRS.</td>
+          </tr>
+          <tr>
+            <td>2. Design</td>
+            <td>Approved requirements</td>
+            <td>Design API, queue, database, UI and content-worker boundaries.</td>
+            <td>Architecture, schema and interface designs.</td>
+          </tr>
+          <tr>
+            <td>3. Data</td>
+            <td>Permitted URL datasets and local fixtures</td>
+            <td>
+              Record source terms and collection dates; review labels; deduplicate and group
+              records.
+            </td>
+            <td>Dataset card and prepared labeled data.</td>
+          </tr>
+          <tr>
+            <td>4. Development</td>
+            <td>Design and prepared data</td>
+            <td>
+              Implement domain/content checks, train models and integrate inference, providers and
+              risk reporting.
+            </td>
+            <td>Integrated detection application and versioned models.</td>
+          </tr>
+          <tr>
+            <td>5. Verification</td>
+            <td>Application and model pipeline</td>
+            <td>
+              Run unit, integration, browser, accessibility and security checks; verify failure
+              states.
+            </td>
+            <td>Test evidence and resolved defects.</td>
+          </tr>
+          <tr>
+            <td>6. Evaluation</td>
+            <td>Frozen holdout and predictions</td>
+            <td>
+              Measure detection metrics, calibration, error patterns and feature-group comparisons.
+            </td>
+            <td>Reproducible evaluation and model card.</td>
+          </tr>
+          <tr>
+            <td>7. Deployment</td>
+            <td>Verified prototype</td>
+            <td>Package local services and prepare setup, demonstration and user instructions.</td>
+            <td>Deployable FYP and final documentation.</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Operational Workflow</h3>
+      <p>
+        A user will submit a URL through the Next.js interface. NestJS will validate the input, save
+        the scan in PostgreSQL and add a BullMQ job to Redis. The worker will extract URL features,
+        retrieve domain metadata, query the threat provider and request bounded content analysis
+        from the isolated worker. A versioned ML inference module will produce a prediction. The
+        risk engine will combine the evidence and model estimate into an explained assessment. The
+        frontend will display progress and the saved report; users can revisit history, retry a scan
+        or export its evidence.
+      </p>
+      <h3>Research Workflow</h3>
+      <p>
+        The research dataset will contain URLs, reviewed labels, observation dates, source
+        information and domain/campaign groups. Canonical duplicates and overlapping groups will be
+        controlled before temporal partitioning. Three models will be trained and calibrated, then
+        compared using validation data. The selected model and thresholds will be frozen before
+        final holdout testing and integrated into the scan workflow. Synthetic fixtures will support
+        software testing; detection performance will be measured on independently labeled examples.
+      </p>
+    </section>
+    <section class="page">
+      <h2>8. Requirement-to-Objective Mapping</h2>
+      <table>
+        <colgroup>
+          <col style="width: 30.37%" />
+          <col style="width: 20%" />
+          <col style="width: 49.63%" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Objective</th>
+            <th>Related requirements</th>
+            <th>Expected result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>O1. Safe persistent scan application</td>
+            <td>FR-01, FR-02, FR-10</td>
+            <td>
+              Validated submissions, recoverable background processing and protected configuration.
+            </td>
+          </tr>
+          <tr>
+            <td>O2. Fraud-indicator detection</td>
+            <td>FR-03, FR-05, FR-06, FR-07</td>
+            <td>Combined URL, domain, content, threat-report and crypto evidence.</td>
+          </tr>
+          <tr>
+            <td>O3. Evaluated ML classification</td>
+            <td>FR-04</td>
+            <td>
+              Three-model comparison, selected model integration and measured holdout results.
+            </td>
+          </tr>
+          <tr>
+            <td>O4. Understandable risk reports</td>
+            <td>FR-08, FR-09</td>
+            <td>Explained assessments, model estimates, history, resubmission and export.</td>
+          </tr>
+          <tr>
+            <td>O5. Verifiable research prototype</td>
+            <td>FR-04, FR-10; cross-cutting tests</td>
+            <td>
+              Repeatable experiments, security evidence, model limitations and technical
+              documentation.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>9. Evaluation Plan and Expected Deliverables</h2>
+      <h3>Evaluation Plan</h3>
+      <p>
+        Functional evaluation will verify URL validation, domain lookup, content extraction, model
+        inference, risk aggregation, lifecycle transitions, history and export. Failure tests will
+        cover provider timeouts, missing metadata, interrupted jobs and partial reports. Security
+        tests will cover unsafe URLs, redirect validation, DNS rebinding defenses, socket
+        destinations, output escaping, resource limits and worker isolation. Browser checks will
+        assess desktop/mobile layouts and keyboard access.
+      </p>
+      <p>
+        ML evaluation will report confusion matrices, per-class precision, recall and F1,
+        false-positive rate, average precision, ROC-AUC where applicable, Brier score, calibration
+        curves and inference latency. Thresholds will be selected using validation data, with
+        false-positive tradeoffs documented before final testing. Error analysis will consider
+        domain groups, observation age and crypto/non-crypto examples where labels support those
+        comparisons.
+      </p>
+      <p>
+        The research hypothesis is that combining URL, domain, content and threat-report indicators
+        can improve detection of unseen fraudulent websites over URL-only analysis. Ablation
+        experiments will compare URL-only, URL-plus-domain, additional content and additional
+        threat-intelligence features. Measured results will establish the benefit of each group and
+        the tradeoff between detection and false positives.
+      </p>
+      <h3>Expected Deliverables</h3>
+      <ul>
+        <li>
+          An integrated fraudulent-website detection application with URL/domain analysis, isolated
+          content checks, threat lookup, ML inference and explainable risk reports.
+        </li>
+        <li>
+          A documented labeled dataset, reproducible three-model comparison, selected versioned
+          model and measured evaluation results.
+        </li>
+        <li>
+          SRS, architecture and database diagrams, dataset/model cards, threat model, test evidence,
+          user manual and final evaluation report.
+        </li>
+        <li>
+          Scan history, downloadable JSON reports, provider-status information, demonstration
+          scenarios, screenshots and a repeatable deployment checklist.
+        </li>
+      </ul>
+    </section>
+    <section class="page">
+      <h2>Expected Outcome and Project Feasibility</h2>
+      <p>
+        The expected outcome is a working web application that detects indicators of fraudulent
+        websites and gives users an understandable risk assessment before they interact with a
+        suspicious link. The completed workflow will integrate URL and domain analysis, isolated
+        page-content inspection, threat-intelligence lookup, ML inference, cryptocurrency indicators
+        and evidence-based explanations. Reports will support informed decisions about entering
+        credentials, sharing information or making payments.
+      </p>
+      <p>
+        The project will be developed incrementally through application infrastructure, dataset
+        preparation, baseline comparison, detection-module integration and final verification.
+        Open-source application and ML technologies will support reproducibility and a controlled
+        FYP deployment. The API, queue, content worker and model module will have clear boundaries
+        so each component can be tested and maintained independently.
+      </p>
+      <h3>Research and Operational Considerations</h3>
+      <p>
+        Dataset sources, permissions, label definitions and observation dates will be documented.
+        Domain/campaign separation and temporal holdouts will measure performance on unseen
+        examples. Website content will be collected with bounded resources and restricted network
+        access; provider credentials will remain on the backend. Provider availability and evidence
+        freshness will be visible in reports.
+      </p>
+      <p>
+        Detection quality will be established through measured evaluation rather than a
+        predetermined accuracy claim. A risk category or model estimate will indicate the evidence
+        available at scan time; an inconclusive result will handle insufficient evidence. This is
+        necessary because website behavior changes and legitimate sites can share characteristics
+        with fraudulent ones.
+      </p>
+      <h2>References</h2>
+      <p>
+        [1] Next.js documentation. Frontend framework and application structure.
+        https://nextjs.org/docs
+      </p>
+      <p>
+        [2] NestJS documentation. Backend framework and modular application architecture.
+        https://docs.nestjs.com/
+      </p>
+      <p>
+        [3] scikit-learn: Probability calibration. Methodological basis for probability calibration.
+        https://scikit-learn.org/stable/modules/calibration.html
+      </p>
+      <p>
+        [4] Google Safe Browsing: Usage restrictions. Conditions to review before enabling the
+        optional provider. https://developers.google.com/safe-browsing/v4/usage-limits
+      </p>
+    </section>
+  </body>
+</html>

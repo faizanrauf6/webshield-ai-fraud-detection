@@ -1,0 +1,68 @@
+name: WebShield quality
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: webshield
+          POSTGRES_PASSWORD: webshield_local
+          POSTGRES_DB: webshield_test
+        ports: ['55432:5432']
+        options: >-
+          --health-cmd "pg_isready -U webshield"
+          --health-interval 3s --health-timeout 3s --health-retries 20
+      redis:
+        image: redis:7-alpine
+        ports: ['56379:6379']
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 3s --health-timeout 3s --health-retries 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: npm ci
+      - run: python -m venv .venv
+      - run: .venv/bin/python -m pip install -r ml/requirements.txt
+      - run: npm run lint
+      - run: npm run test:integration
+      - run: .venv/bin/python -m unittest discover -s ml -p 'test_*.py'
+      - run: make test-scanner
+      - run: make ml-smoke
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Browser tests against production build
+        env:
+          DATABASE_URL: postgresql://webshield:webshield_local@127.0.0.1:55432/webshield_test
+        run: |
+          npm run start -w @webshield/api > /tmp/webshield-api.log 2>&1 &
+          npm run start -w @webshield/web > /tmp/webshield-web.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4000/api/v1/health && curl -fsS http://127.0.0.1:3000 > /dev/null; then break; fi
+            sleep 1
+          done
+          npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-report
+          path: playwright-report/
+  isolation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify application containers and scanner isolation
+        run: |
+          export CONTENT_WORKER_TOKEN="$(openssl rand -hex 32)"
+          trap 'docker compose --profile analysis down' EXIT
+          docker compose --profile analysis up -d --build --wait
+          docker compose exec -T api .venv/bin/python -c 'import sklearn; print(sklearn.__version__)'
+          python3 services/analysis-worker/verify_isolation.py

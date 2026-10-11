@@ -1,0 +1,101 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: webshield
+      POSTGRES_PASSWORD: webshield_local
+      POSTGRES_DB: webshield
+    ports: ['127.0.0.1:55432:5432']
+    volumes: ['postgres_data:/var/lib/postgresql/data']
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U webshield']
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  redis:
+    image: redis:7-alpine
+    command: ['redis-server', '--appendonly', 'yes']
+    ports: ['127.0.0.1:56379:6379']
+    volumes: ['redis_data:/data']
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  api:
+    build: .
+    command: ['sh', '-c', 'npm run migrate && npm run start -w @webshield/api']
+    environment:
+      API_HOST: 0.0.0.0
+      DATABASE_URL: postgresql://webshield:webshield_local@postgres:5432/webshield
+      REDIS_URL: redis://redis:6379
+      ALLOWED_ORIGIN: http://localhost:3000
+      ENABLE_EXTERNAL_PROVIDERS: ${ENABLE_EXTERNAL_PROVIDERS:-false}
+      SAFE_BROWSING_API_KEY: ${SAFE_BROWSING_API_KEY:-}
+      ENABLE_ML: ${ENABLE_ML:-false}
+      ML_PYTHON: /app/.venv/bin/python
+      MODEL_ARTIFACT_DIR: /app/ml/production
+      ENABLE_CONTENT_SCANNING: ${ENABLE_CONTENT_SCANNING:-false}
+      ENABLE_DOMAIN_INTELLIGENCE: ${ENABLE_DOMAIN_INTELLIGENCE:-false}
+      ENABLE_OPENPHISH: ${ENABLE_OPENPHISH:-false}
+      CONTENT_WORKER_URL: http://analysis-worker:4100
+      CONTENT_WORKER_TOKEN: ${CONTENT_WORKER_TOKEN:-}
+    ports: ['127.0.0.1:4000:4000']
+    networks: ['default', 'analysis']
+    volumes: ['./ml/production:/app/ml/production:ro']
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "fetch('http://127.0.0.1:4000/api/v1/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))",
+        ]
+      interval: 5s
+      timeout: 4s
+      retries: 20
+  web:
+    build: .
+    command: ['npm', 'run', 'start', '-w', '@webshield/web']
+    environment:
+      API_BASE_URL: http://api:4000
+    ports: ['127.0.0.1:3000:3000']
+    depends_on:
+      api: { condition: service_healthy }
+  analysis-worker:
+    profiles: ['analysis']
+    build: ./services/analysis-worker
+    # Read-only source mount supports local development without weakening network restrictions.
+    volumes: ['./services/analysis-worker:/app:ro']
+    environment:
+      CONTENT_WORKER_TOKEN: ${CONTENT_WORKER_TOKEN:-}
+    ports: ['127.0.0.1:4100:4100']
+    networks: ['analysis']
+    read_only: true
+    tmpfs: ['/tmp:size=16m,noexec,nosuid']
+    cap_drop: ['ALL']
+    cap_add: ['NET_ADMIN', 'SETUID', 'SETGID']
+    security_opt: ['no-new-privileges:true']
+    pids_limit: 32
+    mem_limit: 128m
+    cpus: 1
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'python',
+          '-c',
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:4100/health', timeout=2)",
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+networks:
+  analysis:
+    driver: bridge
+volumes:
+  postgres_data:
+  redis_data:

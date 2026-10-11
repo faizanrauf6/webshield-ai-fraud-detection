@@ -1,0 +1,32 @@
+{
+  "name": "PhiUSIIL",
+  "authors": ["Arvind Prasad", "Shalini Chandra"],
+  "source": "https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset",
+  "download_url": "https://archive.ics.uci.edu/static/public/967/phiusiil%2Bphishing%2Burl%2Bdataset.zip",
+  "license": "CC BY 4.0",
+  "citation": "Prasad and Chandra (2024), doi:10.1016/j.cose.2023.103545",
+  "imported_at": "2026-10-11T19:10:12.645955+00:00",
+  "raw_sha256": "0a639fd03aea6308c5b1c10c92aa23c2ce1505447a9137271865cd0badc9a59a",
+  "prepared_sha256": "96405766c931bada75fe71dba22f822eb4f82944c5805da1bcc6c13615b926a7",
+  "raw_rows": 235795,
+  "retained_rows": 234661,
+  "class_counts": {
+    "1": 99812,
+    "0": 134849
+  },
+  "exclusions": {
+    "canonical_duplicate": 1100,
+    "unsupported_url": 33,
+    "conflicting_canonical_urls": 1
+  },
+  "label_mapping": "UCI 1=legitimate -> 0; UCI 0=phishing -> 1",
+  "label_basis": "Published benchmark labels; not independently re-reviewed by this project.",
+  "observation_dates": "Unavailable; no collection dates invented. Evaluate by domain/campaign groups, not time.",
+  "scope": "phishing",
+  "limitations": [
+    "Historical benchmark; not a guarantee for current websites.",
+    "No campaign IDs beyond registrable domains are provided.",
+    "No labeled investment/store-fraud cohorts.",
+    "Precomputed content and similarity features are not used by the production lexical model."
+  ]
+}

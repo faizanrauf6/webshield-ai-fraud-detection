@@ -1,0 +1,55 @@
+{
+  "checked_at": "2026-10-11T19:27:32.308Z",
+  "scan_id": "312a7d6c-b69f-4574-9b5d-ac276a62f47e",
+  "rescan_id": "4a436eaa-e6b0-4919-9e05-47ce644f3d2c",
+  "workflow_total_ms": 3381.2311250000002,
+  "assessment": {
+    "category": "high_risk",
+    "numeric_score": 100,
+    "score_kind": "model_probability",
+    "model_version": "lexical-v1-hist_gradient_boosting-3ea803fc85c0",
+    "model_probability": 0.9999636079114032,
+    "model_threshold": 0.3134917009376682,
+    "model_scope": "phishing",
+    "summary": "The installed phishing model estimates elevated risk. Review its limited benchmark scope and the observed evidence; this is not a verified fraud report.",
+    "is_verified_malicious": false
+  },
+  "checks": [
+    {
+      "name": "URL analysis",
+      "status": "completed"
+    },
+    {
+      "name": "Domain intelligence",
+      "status": "unavailable"
+    },
+    {
+      "name": "Threat intelligence",
+      "status": "unavailable"
+    },
+    {
+      "name": "Page content",
+      "status": "skipped"
+    },
+    {
+      "name": "Cryptocurrency indicators",
+      "status": "skipped"
+    },
+    {
+      "name": "Machine learning",
+      "status": "completed"
+    }
+  ],
+  "verified": [
+    "queued submission",
+    "model subprocess",
+    "stored report",
+    "history",
+    "JSON export parity",
+    "resubmission"
+  ],
+  "notes": [
+    "example.com was falsely flagged: model output is an estimate, not verified fraud.",
+    "Timing includes the second scan and history/export checks; it is a workflow measurement, not single-scan latency."
+  ]
+}

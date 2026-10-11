@@ -1,0 +1,17 @@
+{
+  "version": "lexical-v1",
+  "features": [
+    "url_length",
+    "hostname_length",
+    "path_depth",
+    "dot_count",
+    "hyphen_count",
+    "digit_ratio",
+    "query_length",
+    "punycode",
+    "ip_literal",
+    "encoded_chars",
+    "https",
+    "hostname_entropy"
+  ]
+}
