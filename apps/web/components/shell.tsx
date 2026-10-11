@@ -14,6 +14,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { api } from '../lib/api';
+import { ThemeToggle } from './theme-toggle';
 const links = [
   { href: '/', label: 'Overview', icon: LayoutDashboard },
   { href: '/history', label: 'Scan history', icon: History },
@@ -108,6 +109,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <strong>{title}</strong>
           </div>
           <div className="topbar-right">
+            <ThemeToggle />
             <span className={`connection ${connection}`}>
               <i />
               {connection === 'online'

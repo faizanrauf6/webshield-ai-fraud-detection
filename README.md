@@ -18,6 +18,8 @@ npm run dev
 
 Open http://127.0.0.1:3000. Configuration loads from the root `.env`. For all application services in containers, use `docker compose up --build -d --wait`. `docker compose down` preserves stored scans. Local history is shared; there are no accounts or automatic retention limits.
 
+Use the header’s sun/moon theme switch for light or dark mode. The initial theme follows your device; a manual choice is remembered in this browser. Main text and form inputs use 16 px sizing, with supporting labels at least 14 px at the default browser font size. Typography uses relative units so browser font preferences and zoom remain effective.
+
 ## Enable the evaluated model
 
 The evaluated bundle is installed locally in `ml/production/`. Set `ENABLE_ML=true` in `.env` and restart the API. `/api/v1/model-info` shows the actual version, threshold, scope, provenance and metrics. Inference uses `.venv/bin/python` on the host; Compose includes its Python runtime and mounts the bundle read-only. If the runtime, bundle or schema is unavailable, reports show missing ML evidence. First-time numerical-library startup can exceed the 30-second inference deadline; such scans remain unavailable and can be resubmitted.
